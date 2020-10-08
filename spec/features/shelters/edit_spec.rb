@@ -18,6 +18,18 @@ RSpec.describe 'Shelters New' do
     describe 'When I visit a shelter show page then click the link update the shelter "Update Shelter"' do
       it 'can edit the shelter form' do
         visit "/shelters/#{@shelter_1.id}"
+
         expect(page).to have_link('Update Shelter')
         click_link 'Update Shelter'
+
+        expect(current_path).to eq("/shelters/#{@shelter_1.id}/edit")
+        
+        expect(find_field(:name).value).to eq 'Max Fund - Littleton'
+        expect(find_field(:address).value).to eq '1234 Broadway St'
+        expect(find_field(:city).value).to eq 'Littleton'
+        expect(find_field(:state).value).to eq 'CO'
+        expect(find_field(:zip).value).to eq '82349'
+      end
     end
+  end
+end
