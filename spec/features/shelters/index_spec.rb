@@ -21,4 +21,4 @@ RSpec.describe "Shelters Index", type: :feature do
       expect(page).to have_content(@shelter_2.name)
     end
   end
-end 
+end
