@@ -36,7 +36,14 @@ class SheltersController < ApplicationController
       state: params[:shelter][:state],
       zip: params[:shelter][:zip],
       })
-    # shelter.save
-    redirect_to "/shelters/#{@shelter.id}"
+
+    redirect_to '/shelters'
+  end
+
+  def destroy
+    @shelter = Shelter.find(params[:id])
+    @shelter.destroy
+# binding.pry
+    redirect_to '/shelters'
   end
 end
