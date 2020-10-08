@@ -1,6 +1,10 @@
-<h1>Adopt Don't Shop</h1>
+<h1>Adopt Don't Shop</h1></b>
+<!-- <a href='/shelters/new'>New Shelter</a> -->
+<!-- <a href="/shelters">View all Shelters</a> -->
+<h3><%= link_to 'New Shelter', '/shelters/new' %></h3></b>
 
 <% @shelters.each do |shelter| %>
-  <h3><a href="/shelters/<%= shelter.id %>"><%= shelter.name %></a></h3>
-<% end %>
-<h3><%= link_to 'New Shelter', '/shelters/new' %></h3>
+  <%= link_to "#{shelter.name}", "/shelters/#{shelter.id}", method: :get %>
+  <%= link_to 'Edit Shelter', "/shelters/#{shelter.id}/edit", method: :get %>
+  <%= link_to 'Delete Shelter', "/shelters/#{shelter.id}", method: 'delete' %>
+<% end %></br>
