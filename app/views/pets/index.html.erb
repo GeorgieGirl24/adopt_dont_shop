@@ -1,0 +1,9 @@
+<h1>Adopt Don't Shop</h1><br>
+<h2>Pets Index</h2><br>
+  <% @pets.each do |pet| %>
+    <%= image_tag(pet.image) %>
+    <p>Name: <%= pet.name %></p>
+    <p>Approximate Age: <%= pet.approximate_age %></p>
+    <p>Sex: <%= pet.sex %></p>
+    <p>Shelter Name: <%= link_to "#{pet.shelter.name}", "/shelters/#{pet.shelter.id}", method: :get %></p>
+  <% end %>
