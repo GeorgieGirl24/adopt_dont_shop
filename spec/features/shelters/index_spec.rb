@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "Shelters Index", type: :feature do
-  describe "User" do
+RSpec.describe 'Shelters Index' do
+  describe 'User' do
     before :each do
       @shelter_1 = Shelter.create!(name: 'Max Fund - Littleton',
         address: '1234 Broadway St',
