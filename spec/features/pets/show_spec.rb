@@ -24,7 +24,7 @@ RSpec.describe 'Pet Show' do
         approximate_age: 6,
         sex: 'Female',
         shelter_id: "#{@shelter_2.id}",
-        status: false)
+        adoptable: false)
 
 
       @pet_2 = Pet.create!(image: image_1,
@@ -33,7 +33,7 @@ RSpec.describe 'Pet Show' do
         approximate_age: 12,
         sex: 'Male',
         shelter_id: "#{@shelter_1.id}",
-        status: true)
+        adoptable: true)
 
       @pet_3 = Pet.create!(image: image_2,
         name: 'Monkey',
@@ -41,7 +41,7 @@ RSpec.describe 'Pet Show' do
         approximate_age: 12,
         sex: 'Female',
         shelter_id: "#{@shelter_1.id}",
-        status: false)
+        adoptable: false)
     end
 
     it 'can see the unique pets information' do
@@ -54,7 +54,7 @@ RSpec.describe 'Pet Show' do
       expect(page).to have_content(@pet_1.description)
       expect(page).to have_content(@pet_1.approximate_age)
       expect(page).to have_content(@pet_1.sex)
-      expect(page).to have_content(@pet_1.status)
+      expect(page).to have_content(@pet_1.adoptable)
     end
   end
 end
