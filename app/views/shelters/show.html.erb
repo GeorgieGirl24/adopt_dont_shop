@@ -8,3 +8,4 @@
 <p>Zip: <%= @shelter.zip %></p>
 <h3><%= link_to 'Update Shelter', "/shelters/#{@shelter.id}/edit" %></h3>
 <h3><%= link_to 'Delete Shelter', "/shelters/#{@shelter.id}", method: :delete %></h3>
+<h3><%= link_to 'Create Pet', "/shelters/#{@shelter.id}/pets/new" %></h3></b>
