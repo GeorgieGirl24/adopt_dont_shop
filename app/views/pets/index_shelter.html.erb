@@ -4,5 +4,8 @@
   <%= image_tag(pet.image) %>
   <h2>Pet: <%= link_to "#{pet.name}", "/pets/#{pet.id}" %></h2>
   <p>Approximate Age: <%= pet.approximate_age %></p>
+  <p>Desciption: <%= pet.description %></p>
   <p>Sex: <%= pet.sex %> </p>
+  <p>Adoptable: <%= pet.adoptable %> </p>
 <% end %>
+<h2><%= link_to 'Create Pet', "/shelters/#{@shelter.id}/pets/new" %></h2></b>
