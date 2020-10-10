@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2020_10_10_005822) do
     t.string "sex"
     t.bigint "shelter_id"
     t.string "description"
-    t.boolean "status"
+    t.boolean "adoptable", default: true
     t.index ["shelter_id"], name: "index_pets_on_shelter_id"
   end
 

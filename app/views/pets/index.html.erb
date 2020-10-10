@@ -4,6 +4,7 @@
     <%= image_tag(pet.image) %>
     <p>Name: <%= pet.name %></p>
     <p>Approximate Age: <%= pet.approximate_age %></p>
+    <p>Description: <%= pet.description %></p>
     <p>Sex: <%= pet.sex %></p>
     <p>Shelter Name: <%= link_to "#{pet.shelter.name}", "/shelters/#{pet.shelter.id}", method: :get %></p>
   <% end %>
