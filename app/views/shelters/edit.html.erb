@@ -1,17 +1,17 @@
-<h1>Adopt Don't Shop</h1><br>
-<h5><%= link_to 'Back to All Shelters', '/shelters'%> <%= link_to 'Back to All Pets', '/pets'%><h5>
-<h2>Edit the Shelter</h2><br>
+<h1 style="text-align: center;">Adopt Don't Shop</h1><br>
+<h5 style="text-align: center;"><%= link_to 'Back to All Shelters', '/shelters'%> <%= link_to 'Back to All Pets', '/pets'%><h5>
+<h2 style="text-align: center;">Edit the Shelter</h2><br>
   <%= form_tag "/shelters/#{@shelter.id}", method: 'patch' do %>
     <p>Edit the information about the shelter:</p><br>
-    <%= label_tag :name %>
-    <%= text_field_tag :name, @shelter.name %>
-    <%= label_tag :address %>
-    <%= text_field_tag :address, @shelter.address %>
-    <%= label_tag :city %>
-    <%= text_field_tag :city, @shelter.city %>
-    <%= label_tag :state %>
-    <%= text_field_tag :state, @shelter.state %>
-    <%= label_tag :zip %>
-    <%= text_field_tag :zip, @shelter.zip %>
-    <%= submit_tag 'Edit Shelter' %>
+    <p><%= label_tag :name %></p>
+    <p><%= text_field_tag :name, @shelter.name %></p>
+    <p><%= label_tag :address %></p>
+    <p><%= text_field_tag :address, @shelter.address %></p>
+    <p><%= label_tag :city %></p>
+    <p><%= text_field_tag :city, @shelter.city %></p>
+    <p><%= label_tag :state %></p>
+    <p><%= text_field_tag :state, @shelter.state %></p>
+    <p><%= label_tag :zip %></p>
+    <p><%= text_field_tag :zip, @shelter.zip %></p>
+    <p><%= submit_tag 'Edit Shelter' %>
   <% end %>

@@ -1,17 +1,19 @@
-<h1>Adopt Don't Shop</h1>
-
+<header>
+  <h1 style="text-align: center;">Adopt Don't Shop</h1>
+</header>
+<h5><%= link_to 'Back to All Shelters', '/shelters' %> <%= link_to 'Back to All Pets', '/pets' %></h5>
 <%= form_tag "/shelters" do %>
   <p>Enter a new shelter:</p>
-  <%= label_tag 'Name: ' %>
-  <%= text_field_tag :name %>
-  <%= label_tag 'Address: ' %>
-  <%= text_field_tag :address %>
-  <%= label_tag 'City: ' %>
-  <%= text_field_tag :city %>
-  <%= label_tag 'State: ' %>
-  <%= text_field_tag :state %>
-  <%= label_tag 'Zip: ' %>
-  <%= text_field_tag :zip %>
+  <p><%= label_tag 'Name: ' %></p>
+  <p><%= text_field_tag :name %></p>
+  <p><%= label_tag 'Address: ' %></p>
+  <p><%= text_field_tag :address %></p>
+  <p><%= label_tag 'City: ' %></p>
+  <p><%= text_field_tag :city %></p>
+  <p><%= label_tag 'State: ' %></p>
+  <p><%= text_field_tag :state %></p>
+  <p><%= label_tag 'Zip: ' %></p>
+  <p><%= text_field_tag :zip %></p>
 
   <%= submit_tag 'Create Shelter' %>
 <% end %>

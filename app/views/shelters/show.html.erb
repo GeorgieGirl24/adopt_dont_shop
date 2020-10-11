@@ -1,13 +1,14 @@
 
-<h1>Adopt Don't Shop</h1></b>
+<h1 style="text-align: center;">Adopt Don't Shop</h1></b>
 <h5><%= link_to 'Back to All Shelters', '/shelters'%> <%= link_to 'Back to All Pets', '/pets'%><h5>
 <h2><%= @shelter.name %></h2>
-<h2><%= link_to 'Adoptable Pets', "/shelters/#{@shelter.id}/pets" %></h2>
-<h2><%= link_to 'Add a Pet to Shelter', "/shelters/#{@shelter.id}/pets/new" %></h2>
+<h3><%= link_to 'Adoptable Pets', "/shelters/#{@shelter.id}/pets" %></h3>
+<h3><%= link_to 'Add a Pet to Shelter', "/shelters/#{@shelter.id}/pets/new" %></h3>
 
 
 Address: <%= @shelter.address %>
 City: <%= @shelter.city %>
 State: <%= @shelter.state %>
 Zip: <%= @shelter.zip %>
-<%= link_to 'Update Shelter', "/shelters/#{@shelter.id}/edit" %> <%= link_to 'Delete Shelter', "/shelters/#{@shelter.id}", method: :delete %></h3>
+<%= link_to 'Update Shelter', "/shelters/#{@shelter.id}/edit" %>
+<%= link_to 'Delete Shelter', "/shelters/#{@shelter.id}", method: :delete %>

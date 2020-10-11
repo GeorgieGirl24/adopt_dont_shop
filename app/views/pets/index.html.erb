@@ -1,11 +1,12 @@
-<h1>Adopt Don't Shop</h1><br>
-<h2>Pets Index</h2><br>
-<h5><%= link_to 'Back to All Shelters', '/shelters' %></h5><br>
+<h1 style="text-align: center;">Adopt Don't Shop</h1><br>
+<h2 style="text-align: center;">Pets Index</h2><br>
+<h5 style="text-align: center;"><%= link_to 'Back to All Shelters', '/shelters' %></h5><br>
   <% @pets.each do |pet| %>
-    <p>Name: <%= link_to "#{pet.name}", "/pets/#{pet.id}" %></p>
+    <p style="text-align: center;">Name: <%= link_to "#{pet.name}", "/pets/#{pet.id}" %></p>
     <%= image_tag(pet.image, width: '250px') %>
-    <p>Approximate Age: <%= pet.approximate_age %></p>
-    <p>Description: <%= pet.description %></p>
-    <p>Sex: <%= pet.sex %></p>
-    <p>Shelter Name: <%= link_to "#{pet.shelter.name}", "/shelters/#{pet.shelter.id}", method: :get %></p>
+    <p style="text-align: center;">Approximate Age: <%= pet.approximate_age %></p>
+    <p style="text-align: center;">Description: <%= pet.description %></p>
+    <p style="text-align: center;">Sex: <%= pet.sex %></p>
+    <p style="text-align: center;">Shelter Name: <%= link_to "#{pet.shelter.name}", "/shelters/#{pet.shelter.id}", method: :get %></p>
+    <h5 style="text-align: center;"><%= link_to "Delete #{pet.name}", "/pets/#{pet.id}", method: :delete %>
   <% end %>
