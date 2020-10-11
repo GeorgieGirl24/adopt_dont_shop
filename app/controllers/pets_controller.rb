@@ -21,8 +21,17 @@ class PetsController < ApplicationController
     pet = Pet.new(pet_params)
     pet.save
 
-# binding.pry
     redirect_to "/shelters/#{pet.shelter_id}/pets"
+  end
+
+  def edit
+    @pet = Pet.find(params[:pet_id])
+  end
+
+  def update
+    @pet = Pet.find(params[:pet_id])
+    @pet = Pet.update(pet_params)
+    redirect_to "/pets/#{@pet.first.id}"
   end
 
   private
