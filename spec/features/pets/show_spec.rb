@@ -56,5 +56,29 @@ RSpec.describe 'Pet Show' do
       expect(page).to have_content(@pet_1.sex)
       expect(page).to have_content(@pet_1.adoptable)
     end
+
+    it 'can have a back to Shelters Index link' do
+      visit "/pets/#{@pet_3.id}"
+
+      expect(page).to have_content(@pet_3.name)
+
+      expect(page).to have_link('Back to All Shelters')
+      click_link 'Back to All Shelters'
+
+      expect(current_path).to eq('/shelters')
+      expect(page).to have_content(@shelter_1.name)
+    end
+
+    it 'can have a link to see the Pets Index page' do
+      visit "/pets/#{@pet_2.id}"
+
+      expect(page).to have_content(@pet_2.name)
+
+      expect(page).to have_link('Back to All Pets')
+      click_link 'Back to All Pets'
+
+      expect(current_path).to eq('/pets')
+      expect(page).to have_content(@pet_2.name)
+    end
   end
 end
