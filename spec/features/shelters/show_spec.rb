@@ -45,8 +45,6 @@ RSpec.describe 'Shelter Show' do
 
         expect(current_path).to eq('/pets')
       end
-
-      
     end
   end
 end
