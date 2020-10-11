@@ -1,11 +1,13 @@
 <h1>Adopt Don't Shop</h1><br>
 <h2>All pets in  <%= link_to "#{@shelter.name}", "/shelters/#{@shelter.id}" %></h2><br>
+<br>
 <% @pets.each do |pet| %>
-  <%= image_tag(pet.image) %>
-  <h2>Pet: <%= link_to "#{pet.name}", "/pets/#{pet.id}" %></h2>
-  <p>Approximate Age: <%= pet.approximate_age %></p>
-  <p>Desciption: <%= pet.description %></p>
-  <p>Sex: <%= pet.sex %> </p>
-  <p>Adoptable: <%= pet.adoptable %> </p>
+  <br>
+  <h2><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></h2>
+  <%= image_tag(pet.image, size: '200')%>
+  <h3>Approximate Age: <%= pet.approximate_age %></h3>
+  <h3>Desciption: <%= pet.description %></h3>
+  <h3>Sex: <%= pet.sex %></h3>
+
+  <h3><%= link_to 'Update Pet', "/shelters/#{pet.shelter_id}/pets/#{pet.id}/edit" %></h3>
 <% end %>
-<h2><%= link_to 'Create Pet', "/shelters/#{@shelter.id}/pets/new" %></h2></b>
