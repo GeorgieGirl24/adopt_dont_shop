@@ -42,10 +42,6 @@ RSpec.describe 'Pet Delete' do
         expect(page).to have_link('Delete Pet')
         click_link 'Delete Pet'
 
-        # expect(page).to_not have_content('Molli')
-        # expect(page).to_not have_content('Female')
-
-        # expect(current_path).to eq('/pets')
         expect(current_path).to eq("/shelters/#{@pet_1.shelter_id}/pets")
 
         expect(page).to_not have_content('Molli')
