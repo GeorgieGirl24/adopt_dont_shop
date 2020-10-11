@@ -1,6 +1,6 @@
 <h1>Adopt Don't Shop</h1></b>
-
-<h3><%= link_to 'New Shelter', '/shelters/new' %> <%= link_to 'Create Pet', '/pets/new' %></h3>
+<h3><%= link_to 'See All Pets', '/pets' %></h3>
+<h3><%= link_to 'New Shelter', '/shelters/new' %></h3>
 
 <p><% @shelters.each do |shelter| %>
   <h2><%= link_to "#{shelter.name}", "/shelters/#{shelter.id}"%></h2>

@@ -46,5 +46,16 @@ RSpec.describe 'Pets Index' do
       expect(page).to have_content(@pet_3.sex)
       expect(page).to have_content(@shelter_1.name)
     end
+
+    it 'can visit a pet from the Pet Index Page with a link in the Pet name' do
+      visit '/pets'
+
+      # expect(page).to have_content(@pet_2.image)
+      expect(page).to have_link("#{@pet_2.name}")
+      click_link "#{@pet_2.name}"
+
+      expect(current_path).to eq("/pets/#{@pet_2.id}")
+      expect(page).to have_content(@pet_2.name)
+    end
   end
 end

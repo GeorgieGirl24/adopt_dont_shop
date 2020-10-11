@@ -69,7 +69,26 @@ RSpec.describe 'Pet Update' do
       expect(page).to have_content('Molli')
       expect(page).to_not have_content('12')
       expect(page).to_not have_content('Jimmy')
+    end
 
+    it 'can see a link to take you to the Pets Index page' do
+      visit "/pets/#{@pet_1.id}/edit"
+
+      expect(page).to have_link('Back to All Shelters')
+      click_link 'Back to All Shelters'
+
+      expect(current_path).to eq('/shelters')
+      expect(page).to have_content(@shelter_1.name)
+    end
+
+    it 'can see a link to take you to the Shelters Index page' do
+      visit "/pets/#{@pet_1.id}/edit"
+
+      expect(page).to have_link('Back to All Pets')
+      click_link 'Back to All Pets'
+
+      expect(current_path).to eq('/pets')
+      expect(page).to have_content(@pet_1.name)
     end
   end
 end

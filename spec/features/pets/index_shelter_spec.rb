@@ -51,6 +51,56 @@ RSpec.describe 'Pets Index in a Shelter' do
       expect(page).to have_content(@pet_2.name)
       expect(page).to have_content(@pet_2.approximate_age)
       expect(page).to have_content(@pet_2.sex)
-    end 
+    end
+
+    it 'can delete a Pet from the Shelter' do
+      visit "/shelters/#{@shelter_2.id}/pets"
+
+      expect(page).to have_content(@pet_1.name)
+      expect(page).to have_link("Delete #{@pet_1.name}")
+      click_link "Delete #{@pet_1.name}"
+
+      expect(current_path).to eq("/shelters/#{@shelter_2.id}/pets")
+      expect(page).to_not have_content(@pet_1.name)
+    end
+
+    # it 'can see an update link' do
+    #   visit "/shelters/#{@shelter_1.id}/pets"
+    #
+    #   expect(page).to have_content(@pet_3.name)
+    #   expect(page).to have_link('Update Pet')
+    #   # click_link 'Update Pet'
+    #
+    #   expect(current_path).to eq("/pets/#{@pet_3.id}/edit")
+    #   expect(page).to have_content('Edit the Pet')
+    # end
+
+    it 'can see a link go to Pets Index' do
+      visit "/shelters/#{@shelter_1.id}/pets"
+
+      expect(page).to have_content(@pet_2.name)
+      expect(page).to have_content(@pet_3.name)
+
+      expect(page).to have_link('Back to All Pets')
+      click_link 'Back to All Pets'
+
+      expect(current_path).to eq('/pets')
+      expect(page).to have_content(@pet_2.name)
+      expect(page).to have_content(@pet_3.name)
+      expect(page).to have_content(@pet_1.name)
+    end
+
+    it 'can see a link go to Shelters Index' do
+      visit "/shelters/#{@shelter_2.id}/pets"
+
+      expect(page).to have_content(@pet_1.name)
+
+      expect(page).to have_link('Back to All Shelters')
+      click_link 'Back to All Shelters'
+
+      expect(current_path).to eq('/shelters')
+      expect(page).to have_content(@shelter_1.name)
+      expect(page).to have_content(@shelter_2.name)
+    end
   end
 end
