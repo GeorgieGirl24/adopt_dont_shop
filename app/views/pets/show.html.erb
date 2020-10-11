@@ -1,8 +1,9 @@
 <h1>Adopt Don't Shop</h1><br>
 <h2>Adoptable From: <%= link_to "#{@pet.shelter.name}" %><h2>
-<%= image_tag(@pet.image) %>
+<%= image_tag(@pet.image, width: '250px') %>
 <p>Name: <%= @pet.name %></p>
 <p>Description: <%= @pet.description %></p>
 <p>Approximate Age: <%= @pet.approximate_age %></p>
 <p>Sex: <%= @pet.sex %></p>
 <p>Adoptable: <%= @pet.adoptable %></p>
+<p><%= link_to 'Update Pet', "/pets/#{@pet.id}/edit" %></p>
