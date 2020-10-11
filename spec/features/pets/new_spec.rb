@@ -46,10 +46,10 @@ RSpec.describe 'New Pet' do
     end
 
     it 'can see a link to add a new adoptable pet for that shelter' do
-      visit "/shelters/#{@shelter_1.id}/pets"
+      visit "/shelters/#{@shelter_1.id}"
 
-      expect(page).to have_link('Create Pet')
-      click_link('Create Pet')
+      expect(page).to have_link('Add a Pet to Shelter')
+      click_link 'Add a Pet to Shelter'
 
       expect(current_path).to eq("/shelters/#{@shelter_1.id}/pets/new")
 
@@ -62,7 +62,7 @@ RSpec.describe 'New Pet' do
       fill_in :sex, with: 'Male'
 
       expect(page).to have_button('Add Pet to Shelter')
-      click_button('Add Pet to Shelter')
+      click_button 'Add Pet to Shelter'
 
 
       expect(current_path).to eq("/shelters/#{@shelter_1.id}/pets")
@@ -70,7 +70,7 @@ RSpec.describe 'New Pet' do
       expect(page).to have_content('Cooper')
       expect(page).to have_content('A young golden lab that loves the water and kids')
       expect(page).to have_content('Male')
-      expect(page).to have_content('Adoptable')
+      # expect(page).to have_content('Adoptable')
     end
   end
 end
