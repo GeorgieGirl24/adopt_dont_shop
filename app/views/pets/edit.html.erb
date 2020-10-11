@@ -10,7 +10,7 @@
     <%= text_field_tag :approximate_age, @pet.approximate_age %>
     <%= label_tag :description %>
     <%= text_field_tag :description, @pet.description %>
-    <%= label_tag :sex %>
+    <%= radio_button_tag 'gender', 'female'%>
     <%= text_field_tag :sex, @pet.sex %>
     <%= submit_tag 'Update Pet' %>
   <% end %>
