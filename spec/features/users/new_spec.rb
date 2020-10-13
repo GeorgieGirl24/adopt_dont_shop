@@ -33,7 +33,6 @@ RSpec.describe 'New user' do
 
       expect(current_path).to eq("/users/#{@user_2.id}")
       expect(page).to have_content(@user_2.street_address)
-
     end
   end
 end
