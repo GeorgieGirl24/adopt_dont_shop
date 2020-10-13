@@ -20,7 +20,7 @@ RSpec.describe 'As a visitor' do
     end
 
     it 'can see all the Users information' do
-      visit "/#{@user_1.id}"
+      visit "/users/#{@user_1.id}"
 
       expect(page).to have_content(@user_1.name)
       expect(page).to have_content(@user_1.street_address)
