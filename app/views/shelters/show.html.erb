@@ -6,9 +6,9 @@
 <h3><%= link_to 'Add a Pet to Shelter', "/shelters/#{@shelter.id}/pets/new" %></h3>
 
 
-Address: <%= @shelter.address %>
-City: <%= @shelter.city %>
-State: <%= @shelter.state %>
-Zip: <%= @shelter.zip %>
+<p>Address: <%= @shelter.address %></p>
+<p>City: <%= @shelter.city %></p>
+<p>State: <%= @shelter.state %></p>
+<p>Zip: <%= @shelter.zip %></p>
 <%= link_to 'Update Shelter', "/shelters/#{@shelter.id}/edit" %>
 <%= link_to 'Delete Shelter', "/shelters/#{@shelter.id}", method: :delete %>
