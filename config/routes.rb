@@ -25,4 +25,6 @@ Rails.application.routes.draw do
   get '/users/new', to: 'users#new'
   get '/users/:user_id', to: 'users#show'
   post '/users/:user_id', to: 'users#create'
+
+  get '/shelters/:shelter_id/reviews', to: 'reviews#index'
 end
