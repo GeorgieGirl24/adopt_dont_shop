@@ -20,7 +20,7 @@ RSpec.describe 'Shelters Show Page' do
         content: 'I dropped off Fluffy and the staff was so attentive.',
         image: 'https://imgur.com/gallery/xO0wmxm')
     end
-    
+
     it 'can see a list of reviews for that shelter' do
       visit "/shelters/#{@shelter_1.id}/reviews"
 
@@ -28,6 +28,7 @@ RSpec.describe 'Shelters Show Page' do
       expect(page).to have_content(@review.title)
       expect(page).to have_content(@review.rating)
       expect(page).to have_css("img[src*='#{@review.image}']")
+      
     end
   end
 end
