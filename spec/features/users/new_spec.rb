@@ -18,6 +18,7 @@ RSpec.describe 'New user' do
         zip: '39482'
       })
     end
+
     it 'can see a form to create a new user' do
       visit '/users/new'
 
@@ -30,8 +31,8 @@ RSpec.describe 'New user' do
       expect(page).to have_button('Create User')
 
       click_button 'Create User'
-
-      expect(current_path).to eq("/users/#{@user_2.id}")
+      new_user = User.last
+      expect(current_path).to eq("/users/#{new_user.id}")
       expect(page).to have_content(@user_2.street_address)
     end
   end
