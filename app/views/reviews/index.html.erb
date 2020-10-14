@@ -1,0 +1,10 @@
+<h1>Adopt Don't Shop</h1></b>
+<h5><%= link_to 'Back to All Shelters', '/shelters'%> <%= link_to 'Back to All Pets', '/pets' %><h5>
+
+<p>Review for : <%= link_to "#{@shelter.name}", "/shelters/#{@shelter.id}" %></p>
+<% @shelter.reviews.each do |review| %>
+  <p>Title: <%= review.title %></p>
+  <%= image_tag(review.image, width: '250px') %>
+  <p>Rating: <%= review.rating %></p>
+  <p>Content: <%= review.content %></p>
+<% end %>
