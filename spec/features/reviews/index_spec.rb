@@ -29,15 +29,17 @@ RSpec.describe 'Shelters Show Page' do
         state: 'CO',
         zip: '80829')
 
-      @review = @shelter_1.reviews.create!(title: 'Awesome Staff',
-        rating: 4.7,
-        content: 'I dropped off Fluffy and the staff was so attentive.',
-        image: 'https://imgur.com/gallery/xO0wmxm',
-        user_id: @jacque_nikkelson.id)
+
     end
 
     it 'can see a list of reviews for that shelter' do
       visit "/shelters/#{@shelter_1.id}/reviews"
+      @review = @shelter_1.reviews.create!(title: 'Awesome Staff',
+        rating: 4.7,
+        content: 'I dropped off Fluffy and the staff was so attentive.',
+        image: 'https://imgur.com/gallery/xO0wmxm',
+        user_id: @review.user_id
+      )
 
       expect(page).to have_content(@shelter_1.name)
       expect(page).to have_content(@review.title)
