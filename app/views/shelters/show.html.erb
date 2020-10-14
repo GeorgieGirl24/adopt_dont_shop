@@ -5,7 +5,16 @@
 <h3><%= link_to 'Adoptable Pets', "/shelters/#{@shelter.id}/pets" %></h3>
 <h3><%= link_to 'Add a Pet to Shelter', "/shelters/#{@shelter.id}/pets/new" %></h3>
 
-<h3><%= link_to "Reviews for #{@shelter.name}", "/shelters/#{@shelter.id}/reviews" %></h3>
+<!-- <h3><%= link_to "Reviews for #{@shelter.name}", "/shelters/#{@shelter.id}/reviews" %></h3> -->
+
+<p>Review for: <%= link_to "Reviews for #{@shelter.name}", "/shelters/#{@shelter.id}" %></p>
+<% @shelter.reviews.each do |review| %>
+  <p>Title: <%= review.title %></p>
+  <%= image_tag(review.image, width: '250px') %>
+  <p>Rating: <%= review.rating %></p>
+  <p>Content: <%= review.content %></p>
+  <p>Name: <%= review.user.name %></p>
+<% end %>
 
 Address: <%= @shelter.address %>
 City: <%= @shelter.city %>

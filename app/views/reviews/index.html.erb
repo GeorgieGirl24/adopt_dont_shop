@@ -7,4 +7,6 @@
   <%= image_tag(review.image, width: '250px') %>
   <p>Rating: <%= review.rating %></p>
   <p>Content: <%= review.content %></p>
+<% binding.pry %>
+  <p>Name: <%= review.user.name %></p>
 <% end %>
