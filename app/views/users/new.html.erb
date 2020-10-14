@@ -1,0 +1,15 @@
+<h1>Adopt Don't Shop</h1><br>
+<%= form_tag '/users/new' do %>
+  <p><%= label_tag 'Name: ' %></p>
+  <p><%= text_field_tag :name %></p>
+  <p><%= label_tag 'Street Address: ' %></p>
+  <p><%= text_field_tag :street_address %></p>
+  <p><%= label_tag 'City: ' %></p>
+  <p><%= text_field_tag :city %></p>
+  <p><%= label_tag 'State: ' %></p>
+  <p><%= text_field_tag :state %></p>
+  <p><%= label_tag 'Zip: ' %></p>
+  <p><%= text_field_tag :zip %></p>
+
+  <%= submit_tag 'Create User', "/users/#{@user_id}" %>
+<% end %>
