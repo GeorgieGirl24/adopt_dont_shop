@@ -26,7 +26,6 @@ RSpec.describe 'Pet Show' do
         shelter_id: "#{@shelter_2.id}",
         adoptable: false)
 
-
       @pet_2 = Pet.create!(image: image_1,
         name: 'Misto',
         description: 'Chichuahua, miniture Italian Grey that is a little skiddish, but so sweet',
