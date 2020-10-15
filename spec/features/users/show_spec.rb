@@ -3,6 +3,20 @@ require 'rails_helper'
 RSpec.describe 'As a visitor' do
   describe 'when I visit a User Show page' do
     before :each do
+      @shelter_1 = Shelter.create!(
+        name: 'Max Fund - Littleton',
+        address: '1234 Broadway St',
+        city: 'Littleton',
+        state: 'CO',
+        zip: '82349'
+      )
+      @shelter_2 = Shelter.create!(
+        name: 'Humane Society - Thornton',
+        address: '12489 120 St',
+        city: 'Thorton',
+        state: 'CO',
+        zip: '80829'
+      )
       @user_1 = User.create!({
         name: 'Brian',
         street_address: '123 Medival Dr.',
@@ -17,6 +31,20 @@ RSpec.describe 'As a visitor' do
         state: 'WA',
         zip: '39482'
       })
+      @review_1 = @shelter_1.reviews.create!(
+        title: 'Awesome Shelter!',
+        rating: '4.5',
+        content: 'I love this place! Amazing service!',
+        image: 'https://i.imgur.com/FRK6meX.png',
+        user_id: @user_1.id
+      )
+      @review_2 = @shelter_2.reviews.create!(
+        title: 'This place is aight',
+        rating: '3.5',
+        content: 'I mean...its aight, whatever.',
+        image: '',
+        user_id: @user_1.id
+      )
     end
 
     it 'can see all the Users information' do
@@ -28,6 +56,17 @@ RSpec.describe 'As a visitor' do
       expect(page).to have_content(@user_1.state)
       expect(page).to have_content(@user_1.zip)
       expect(page).to_not have_content(@user_2.name)
+    end
+
+    it 'can see every review the unique user has written' do
+      visit "/users/#{@user_1.id}"
+
+      expect(page).to have_content(@user_1.name)
+      expect(page).to have_content('Manage Reviews')
+      expect(page).to have_content(@review_1.title)
+      expect(page).to have_content(@review_1.rating)
+      expect(page).to have_css("img[src*='#{@review_1.image}']")
+      expect(page).to have_content(@review_1.content)
     end
   end
 end
