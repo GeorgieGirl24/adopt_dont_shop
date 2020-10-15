@@ -8,6 +8,7 @@
 <!-- <h3><%= link_to "Reviews for #{@shelter.name}", "/shelters/#{@shelter.id}/reviews" %></h3> -->
 
 <p>Review for: <%= link_to "Reviews for #{@shelter.name}", "/shelters/#{@shelter.id}" %></p>
+<p><%= link_to 'Add a Review', "/shelters/#{@shelter.id}/reviews/new" %></p>
 <% @shelter.reviews.each do |review| %>
   <p>Title: <%= review.title %></p>
   <%= image_tag(review.image, width: '250px') %>
