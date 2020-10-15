@@ -13,9 +13,9 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    # binding.pry
-    # @user = User.find(params[:user_id])
     @shelter = Shelter.find(params[:shelter_id])
+    @user_name = params[:name]
+# binding.pry
     review = @shelter.reviews.new(review_params)
     review.save
 
