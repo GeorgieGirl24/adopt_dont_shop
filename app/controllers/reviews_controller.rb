@@ -20,7 +20,6 @@ class ReviewsController < ApplicationController
       image: params[:image],
       shelter: @shelter,
       user_id: @user_id)
-
     # review = Review.new(review_params, user_id: @user_id, shelter: @shelter)
     review.save!
 
@@ -29,8 +28,6 @@ class ReviewsController < ApplicationController
 
   private
   def review_params
-    # @user_name = User.where(name: params[:name])
-    # @shelter = Shelter.find(params[:shelter_id])
     params.permit(:title, :rating, :content, :image)
     # params.require(:user).permit(:name, :street_address, :city, :state, :zip)
   end
