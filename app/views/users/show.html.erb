@@ -1,7 +1,13 @@
-<h1>Adopt Don't Shop</h1>
-
 <p>Name: <%= @user.name %></p>
 <p>Address: <%= @user.street_address %></p>
 <p>City: <%= @user.city %></p>
 <p>State: <%= @user.state %></p>
 <p>Zip: <%= @user.zip %></p>
+
+<h2>Manage Reviews</h2>
+<% @reviews.each do |review| %>
+  <p>Title: <%= review.title %></p>
+  <p>Rating: <%= review.rating %></p>
+  <p>Content: <%= review.content %></p>
+  <p><img src="<%= review.image %>" height="250"></p>
+<% end  %>
