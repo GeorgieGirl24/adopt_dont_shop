@@ -27,4 +27,6 @@ Rails.application.routes.draw do
   post '/users/:user_id', to: 'users#create'
 
   get '/shelters/:shelter_id/reviews', to: 'reviews#index'
+  get '/shelters/:shelter_id/reviews/new', to: 'reviews#new'
+  post '/shelters/:shelter_id', to: 'reviews#create'
 end
