@@ -1,0 +1,16 @@
+<%# <h2><%= Edit Review %></h2> %>
+<h5><%= link_to 'Back to All Shelters', '/shelters'%> <%= link_to 'Back to All Pets', '/pets'%><h5>
+  <%= form_tag "/reviews/#{@review.id}", method: 'patch' do %>
+    <p>Edit the information:</p><br>
+    <p><%= label_tag :title %></p>
+    <p><%= text_field_tag :title, @review.title %></p>
+    <p><%= label_tag :rating %></p>
+    <p><%= text_field_tag :rating, @review.rating %></p>
+    <p><%= label_tag :content %></p>
+    <p><%= text_field_tag :content, @review.content %></p>
+    <p><%= label_tag :image %></p>
+    <p><%= text_field_tag :image, @review.image %></p>
+    <p><%= label_tag :name %></p>
+    <p><%= text_field_tag :name, @user.name %></p>
+    <p><%= submit_tag 'Update Review' %></p>
+  <% end %>

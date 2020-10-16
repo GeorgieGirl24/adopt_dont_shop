@@ -50,5 +50,3 @@ RSpec.describe 'Shelter Review Creation' do
     end
   end
 end
-
-User.joins(reviews: :name)
