@@ -26,13 +26,14 @@ class ReviewsController < ApplicationController
     # review.user_id = @user_id
     # review.shelter_id = @shelter.id
     # new_review = Review.make_review
-    new_review.save!
+    # binding.pry
+    if review.save
       redirect_to "/shelters/#{@shelter.id}"
-    # else
-    #   flash[:error] = 'You need to fill this form out completely! Try again'
-    #   # render/
-    #   redirect_to "/shelters/#{@shelter.id}/new"
-    # end
+    else
+      flash.now[:alert] = 'Required information missing. Request not submitted'
+      # redirect_to "/shelters/#{@shelter.id}/reviews/new"
+      render :new
+    end
   end
 
   def edit
