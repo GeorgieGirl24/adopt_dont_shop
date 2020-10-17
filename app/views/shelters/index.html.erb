@@ -1,13 +1,9 @@
-<h1>Adopt Don't Shop</h1></b>
 <h5><%= link_to 'See All Pets', '/pets' %></h5>
 <h3><%= link_to 'New Shelter', '/shelters/new' %></h3>
-
-
-
 <p><% @shelters.each do |shelter| %>
-  <h2 style="text-align: center;"><%= link_to "#{shelter.name}", "/shelters/#{shelter.id}"%></h2>
-  <ul style="text-align: center;">
+  <h2><%= link_to "#{shelter.name}", "/shelters/#{shelter.id}"%></h2>
+  <ul>
   <%= link_to 'Edit Shelter', "/shelters/#{shelter.id}/edit"%>
   <%= link_to 'Delete Shelter', "/shelters/#{shelter.id}", method: :delete %>
-  </ul style="text-align: center;">
+  </ul>
 <% end %></p><br>
