@@ -13,5 +13,5 @@
 <% end  %>
 
 <section id="average-review-score">
-  <h3>My average review score: <%= @user.average_review_score(@reviews) %></h3>
+  <h3>My average review score: <%= @user.average_review_score.round(2) %></h3>
 </section>
