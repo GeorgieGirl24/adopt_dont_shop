@@ -12,6 +12,13 @@
   <body>
     <h1><header id='main-header'>Adopt Don't Shop</header></h1>
 
+    <% flash.each do |type, message| %>
+      <div class="alert alert-info">
+      <section class=<%= type %>>
+        <p><%= message %></p>
+      </section>
+      </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>
