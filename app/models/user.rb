@@ -7,7 +7,9 @@ class User < ApplicationRecord
   validates_presence_of :state
   validates_presence_of :zip
 
-  def average_review_score(reviews)
-    reviews.average(:rating).round(2)
+  def average_review_score
+    self.reviews.average(:rating)
+    # binding.pry
+    # reviews.average(:rating)
   end
 end
