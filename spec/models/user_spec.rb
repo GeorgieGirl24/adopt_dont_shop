@@ -63,11 +63,14 @@ describe User do
     end
 
     it '#highest_rated_review' do
+
+
+
       expect(@user_1.highest_rated_review).to eq(@review_1.rating)
     end
 
     it '#lowest_rated_review' do
-      expect(@user_1.lowest_rated_review).to eq(@review_1.rating)
+      expect(@user_1.lowest_rated_review).to eq(@review_3.rating)
     end
   end
 end
