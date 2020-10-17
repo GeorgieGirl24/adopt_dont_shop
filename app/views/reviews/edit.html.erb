@@ -1,4 +1,4 @@
-<%# <h2><%= Edit Review %></h2> %>
+
 <h5><%= link_to 'Back to All Shelters', '/shelters'%> <%= link_to 'Back to All Pets', '/pets'%><h5>
   <%= form_tag "/reviews/#{@review.id}", method: 'patch' do %>
     <p>Edit the information:</p><br>

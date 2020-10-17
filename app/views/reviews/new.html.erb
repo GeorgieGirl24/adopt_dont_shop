@@ -1,3 +1,4 @@
+<h5><%= link_to 'Back to All Shelters', '/shelters'%> <%= link_to 'Back to All Pets', '/pets'%><h5>
 <%= form_tag "/shelters/#{@shelter.id}/reviews" do %>
   <p>Enter a new review:</p>
   <p><%= label_tag 'Title: ' %></p>
@@ -11,5 +12,6 @@
   <p><%= label_tag 'Name: ' %></p>
   <p><%= text_field_tag :name %></p>
 
-  <%= submit_tag 'Submit' %> 
+  <%= submit_tag 'Submit' %>
+
 <% end %>

@@ -12,7 +12,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @user_id = User.where(name: params[:name]).pluck(:id).first
+    @user_id = User.find_by(name: params[:name]).pluck(:id)
     @shelter = Shelter.find(params[:shelter_id])
     review = Review.new(title: params[:title],
       rating: params[:rating],
@@ -20,19 +20,21 @@ class ReviewsController < ApplicationController
       image: params[:image],
       shelter: @shelter,
       user_id: @user_id)
+    if @user_id.nil?
+      flash[:alert] = "That name doesn't exisit in our database. You must be a valid user."
+      redirect_to "/shelters/#{@shelter.id}/reviews/new"
+    elsif review.save
+      redirect_to "/shelters/#{@shelter.id}"
+    else
+      flash[:alert] = 'Required information missing. Request not submitted'
+      redirect_to "/shelters/#{@shelter.id}/reviews/new"
+    end
 # user_id: @user_id
 # move to Model
     # review = Review.new(review_params)
     # review.user_id = @user_id
     # review.shelter_id = @shelter.id
     # new_review = Review.make_review
-    new_review.save!
-      redirect_to "/shelters/#{@shelter.id}"
-    # else
-    #   flash[:error] = 'You need to fill this form out completely! Try again'
-    #   # render/
-    #   redirect_to "/shelters/#{@shelter.id}/new"
-    # end
   end
 
   def edit
@@ -42,10 +44,31 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    review = Review.find(params[:review_id])
-    @review = Review.update(review_params)
-    @shelter = Shelter.find(review.shelter_id)
-    redirect_to "/shelters/#{@shelter.id}"
+    @user = User.find_by(name: params[:name])
+    @review = Review.find(params[:review_id])
+    @shelter = Shelter.find(@review.shelter_id)
+    if @user.nil?
+      flash[:alert] = "That name doesn't exisit in our database. You must be a valid user."
+      redirect_to "/reviews/#{@review.id}/edit"
+    elsif review = @review.update(title: params[:title],
+      rating: params[:rating],
+      content: params[:content],
+      image: params[:image],
+      shelter: @shelter,
+      user: @user
+      )
+      review = @review.update(title: params[:title],
+        rating: params[:rating],
+        content: params[:content],
+        image: params[:image],
+        shelter: @shelter,
+        user: @user
+      )
+      redirect_to "/shelters/#{@shelter.id}"
+    else
+      flash.now[:alert] = 'Empty Field. Please try again.'
+      render :edit
+    end
   end
 
   def destroy
@@ -57,6 +80,6 @@ class ReviewsController < ApplicationController
 
   private
   def review_params
-    params.permit(:title, :rating, :content, :image)
+    params.permit(:title, :rating, :content, :image, :name)
   end
 end
