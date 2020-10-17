@@ -3,8 +3,6 @@
 <h3><%= link_to 'Adoptable Pets', "/shelters/#{@shelter.id}/pets" %></h3>
 <h3><%= link_to 'Add a Pet to Shelter', "/shelters/#{@shelter.id}/pets/new" %></h3>
 
-<!-- <h3><%= link_to "Reviews for #{@shelter.name}", "/shelters/#{@shelter.id}/reviews" %></h3> -->
-
 <p>Review for: <%= link_to "Reviews for #{@shelter.name}", "/shelters/#{@shelter.id}" %></p>
 <p><%= link_to 'Add a Review', "/shelters/#{@shelter.id}/reviews/new" %></p>
 <% @shelter.reviews.each do |review| %>
