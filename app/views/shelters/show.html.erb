@@ -9,13 +9,13 @@
 <p><%= link_to 'Add a Review', "/shelters/#{@shelter.id}/reviews/new" %></p>
 <% @shelter.reviews.each do |review| %>
   <section id="review-<%= review.id %>">
-  <p>Title: <%= review.title %></p>
+  <h2><%= review.title %></h2>
   <%= image_tag(review.image, width: '250px') %>
   <p>Rating: <%= review.rating %></p>
   <p>Content: <%= review.content %></p>
   <p>Name: <%= review.user.name %></p>
-  <h5> <%= link_to 'Edit Review', "/reviews/#{review.id}/edit" %></h5>
-  <h5> <%= link_to 'Delete Review', "/reviews/#{review.id}", method: :delete %></h5>
+  <h5> <%= link_to 'Edit Review', "/reviews/#{review.id}/edit" %> <%= link_to 'Delete Review', "/reviews/#{review.id}", method: :delete %></h5>
+  </section>
 <% end %>
 
 Address: <%= @shelter.address %>
