@@ -1,7 +1,5 @@
-
-<h1 style="text-align: center;">Adopt Don't Shop</h1></b>
-<h5 style="text-align: center;"><%= link_to 'Back to All Shelters', '/shelters'%> <%= link_to 'Back to All Pets', '/pets'%><h5>
-<h2 style="text-align: center;"><%= @shelter.name %></h2>
+<h5><%= link_to 'Back to All Shelters', '/shelters'%> <%= link_to 'Back to All Pets', '/pets'%><h5>
+<h2><%= @shelter.name %></h2>
 <h3><%= link_to 'Adoptable Pets', "/shelters/#{@shelter.id}/pets" %></h3>
 <h3><%= link_to 'Add a Pet to Shelter', "/shelters/#{@shelter.id}/pets/new" %></h3>
 
