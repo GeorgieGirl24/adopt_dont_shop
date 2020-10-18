@@ -6,4 +6,12 @@ class Shelter < ApplicationRecord
   validates_presence_of :city
   validates_presence_of :state
   validates_presence_of :zip
+
+  def total_pets
+    self.pets.count
+  end
+
+  def average_review_score
+    self.reviews.average(:rating)
+  end
 end
