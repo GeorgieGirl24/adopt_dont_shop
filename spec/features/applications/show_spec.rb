@@ -44,12 +44,14 @@
 #
 #       @application_1 = Application.create!(
 #         user_name: @user_2.name,
-#         user_addresss: @user.address,
-#         description: ,
+#         user_address: @user_2.address,
+#         description: 'I am great with animals and have a yard',
 #         pets: [@pet_1.name, @pet_2.name, @pet_3.name],
 #         status: @status[1]
 #       )
 #     end
+#
+#
 #     # it 'can see all the information needed for an application' do
 #     # end
 #   end
