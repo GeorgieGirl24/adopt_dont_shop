@@ -17,6 +17,13 @@ RSpec.describe 'As a visitor' do
         state: 'CO',
         zip: '80829'
       )
+      @shelter_3 = Shelter.create!(
+        name: 'Denver Dumb Friends League',
+        address: '54321 Park Ave',
+        city: 'Denver',
+        state: 'CO',
+        zip: '80202'
+      )
       @user_1 = User.create!({
         name: 'Brian',
         street_address: '123 Medival Dr.',
@@ -45,7 +52,16 @@ RSpec.describe 'As a visitor' do
         image: '',
         user_id: @user_1.id
       )
-      @review_3 = @shelter_2.reviews.create!(
+
+      @review_3 = @shelter_3.reviews.create!(
+        title: 'Awful!',
+        rating: '1.5',
+        content: 'Worst shelter ever!',
+        image: 'https://i.imgur.com/ETO90Ubb.jpg',
+        user_id: @user_1.id
+      )
+        
+      @review_4 = @shelter_2.reviews.create!(
         title: 'Loved the care of Sophia',
         rating: '4.9',
         content: 'Sophia is an awesome employee. She deserves a raise',
@@ -75,6 +91,26 @@ RSpec.describe 'As a visitor' do
       expect(page).to have_css("img[src*='#{@review_1.image}']")
       expect(page).to have_content(@review_1.content)
     end
+
+    it 'I can see a section for Highlighted Reviews with best and worst reviews' do
+      visit "/users/#{@user_1.id}"
+      expect(page).to have_content("Highlighted Reviews")
+
+      within "#highest_rated_review" do
+        expect(page).to have_content("Highest Rated Review")
+        expect(page).to have_content(@review_1.title)
+        expect(page).to have_content(@review_1.rating)
+        expect(page).to have_content(@review_1.content)
+        expect(page).to have_content(@review_1.image)
+      end
+
+      within "#lowest_rated_review" do
+        expect(page).to have_content("Lowest Rated Review")
+        expect(page).to have_content(@review_3.title)
+        expect(page).to have_content(@review_3.rating)
+        expect(page).to have_content(@review_3.content)
+        expect(page).to have_content(@review_3.image)
+      end
 
     it 'can see the average of all their reviews' do
       visit "/users/#{@user_1.id}"

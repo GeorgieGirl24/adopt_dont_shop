@@ -30,8 +30,9 @@ class PetsController < ApplicationController
 
   def update
     @pet = Pet.find(params[:pet_id])
-    @pet = Pet.update(pet_params)
-    redirect_to "/pets/#{@pet.first.id}"
+    # binding.pry
+    @pet.update(pet_params)
+    redirect_to "/pets/#{@pet.id}"
   end
 
   def destroy
