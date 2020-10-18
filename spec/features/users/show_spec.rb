@@ -87,14 +87,20 @@ RSpec.describe 'As a visitor' do
       visit "/users/#{@user_1.id}"
       expect(page).to have_content("Highlighted Reviews")
 
-      within "#highest_rated_review-#{@review.id}" do
-        expect(page).to have_content("Highest_Rated_Review")
-        expect(page).to have_content(@review_1)
+      within "#highest_rated_review" do
+        expect(page).to have_content("Highest Rated Review")
+        expect(page).to have_content(@review_1.title)
+        expect(page).to have_content(@review_1.rating)
+        expect(page).to have_content(@review_1.content)
+        expect(page).to have_content(@review_1.image)
       end
 
-      within "#lowest_rated_review-#{@review.id}" do
-        expect(page).to have_content("Lowest_Rated_Review")
-        expect(page).to have_content(@review_3)
+      within "#lowest_rated_review" do
+        expect(page).to have_content("Lowest Rated Review")
+        expect(page).to have_content(@review_3.title)
+        expect(page).to have_content(@review_3.rating)
+        expect(page).to have_content(@review_3.content)
+        expect(page).to have_content(@review_3.image)
       end
     end
   end
