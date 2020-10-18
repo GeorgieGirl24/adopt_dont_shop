@@ -3,11 +3,17 @@
 <h3><%= link_to 'Adoptable Pets', "/shelters/#{@shelter.id}/pets" %></h3>
 <h3><%= link_to 'Add a Pet to Shelter', "/shelters/#{@shelter.id}/pets/new" %></h3>
 
-<p>Review for: <%= link_to "Reviews for #{@shelter.name}", "/shelters/#{@shelter.id}" %></p>
+<section id='shelter-statistics'>
+  <h3><%= @shelter.name %>'s Statics</h3>
+  <p>Total number of pets: <%= @shelter.total_pets %></p>
+  <p>Average review score: <%= @shelter.average_review_score %></p>
+</section>
+
+<p><h3><%= link_to "Reviews for #{@shelter.name}", "/shelters/#{@shelter.id}" %></h3></p>
 <p><%= link_to 'Add a Review', "/shelters/#{@shelter.id}/reviews/new" %></p>
 <% @shelter.reviews.each do |review| %>
   <section id="review-<%= review.id %>">
-  <h2><%= review.title %></h2>
+  <h3><%= review.title %></h3>
   <%= image_tag(review.image, width: '250px') %>
   <p>Rating: <%= review.rating %></p>
   <p>Content: <%= review.content %></p>
@@ -16,9 +22,11 @@
   </section>
 <% end %>
 
+
 Address: <%= @shelter.address %>
 City: <%= @shelter.city %>
 State: <%= @shelter.state %>
 Zip: <%= @shelter.zip %>
+
 <%= link_to 'Update Shelter', "/shelters/#{@shelter.id}/edit" %>
 <%= link_to 'Delete Shelter', "/shelters/#{@shelter.id}", method: :delete %>

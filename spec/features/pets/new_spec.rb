@@ -70,7 +70,6 @@ RSpec.describe 'New Pet' do
       expect(page).to have_content('Cooper')
       expect(page).to have_content('A young golden lab that loves the water and kids')
       expect(page).to have_content('Male')
-      # expect(page).to have_content('Adoptable')
     end
   end
 end

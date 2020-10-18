@@ -52,11 +52,20 @@ RSpec.describe 'As a visitor' do
         image: '',
         user_id: @user_1.id
       )
+
       @review_3 = @shelter_3.reviews.create!(
         title: 'Awful!',
         rating: '1.5',
         content: 'Worst shelter ever!',
-        image: '',
+        image: 'https://i.imgur.com/ETO90Ubb.jpg',
+        user_id: @user_1.id
+      )
+        
+      @review_4 = @shelter_2.reviews.create!(
+        title: 'Loved the care of Sophia',
+        rating: '4.9',
+        content: 'Sophia is an awesome employee. She deserves a raise',
+        image: 'https://i.imgur.com/ETO90Ubb.jpg',
         user_id: @user_1.id
       )
     end
@@ -102,6 +111,15 @@ RSpec.describe 'As a visitor' do
         expect(page).to have_content(@review_3.content)
         expect(page).to have_content(@review_3.image)
       end
+
+    it 'can see the average of all their reviews' do
+      visit "/users/#{@user_1.id}"
+
+      within "#average-review-score" do
+        expect(page).to have_content('My average review score')
+        expect(page).to have_content('4.3')
+      end
+
     end
   end
 end

@@ -30,9 +30,14 @@ class SheltersController < ApplicationController
 
   def destroy
     @shelter = Shelter.find(params[:id])
+    # binding.pry
+    # if !@shelter.pets.nil?
+    #   @shelter.pets.each do |pet|
+    #     pet.destroy
+    #   end
     @shelter.destroy
-
-    redirect_to '/shelters'
+      redirect_to '/shelters'
+    # end
   end
 
   private

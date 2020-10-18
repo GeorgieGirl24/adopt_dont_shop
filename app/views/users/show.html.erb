@@ -13,6 +13,7 @@
   <p><img src="<%= review.image %>" height="250"></p>
 <% end  %>
 
+
 <h2>Highlighted Reviews</h2>
 <section id='highest_rated_review' >
 <h3>Highest Rated Review</h3>
@@ -28,4 +29,7 @@
 <%= @user.lowest_rated_review[:rating] %>
 <%= @user.lowest_rated_review[:content] %>
 <%= @user.lowest_rated_review[:image] %>
+  
+<section id="average-review-score">
+  <h3>My average review score: <%= @user.average_review_score %></h3>
 </section>
