@@ -60,14 +60,27 @@ describe User do
         image: '',
         user_id: @user_1.id
       )
+      @highest_review = {
+        title: @review_1.title,
+        rating: @review_1.rating,
+        content: @review_1.content,
+        image: @review_1.image
+      }
+      @lowest_review = {
+        title: @review_3.title,
+        rating: @review_3.rating,
+        content: @review_3.content,
+        image: @review_3.image
+      }
+
     end
 
     it '#highest_rated_review' do
-      expect(@user_1.highest_rated_review).to eq(@review_1.rating)
+      expect(@user_1.highest_rated_review).to eq(@highest_review)
     end
 
     it '#lowest_rated_review' do
-      expect(@user_1.lowest_rated_review).to eq(@review_3.rating)
+      expect(@user_1.lowest_rated_review).to eq(@lowest_review)
     end
   end
 end
