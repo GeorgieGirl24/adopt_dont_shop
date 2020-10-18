@@ -12,7 +12,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @user_id = User.find_by(name: params[:name]).pluck(:id)
+    @user_id = User.where(name: params[:name]).pluck(:id)
     @shelter = Shelter.find(params[:shelter_id])
     review = Review.new(title: params[:title],
       rating: params[:rating],
