@@ -6,7 +6,7 @@
 <section id='shelter-statistics'>
   <h3><%= @shelter.name %>'s Statics</h3>
   <p>Total number of pets: <%= @shelter.total_pets %></p>
-  <p>Average review score: <%= @shelter.average_review_score.round(2) %></p>
+  <p>Average review score: <%= @shelter.average_review_score %></p>
 </section>
 
 <p><h3><%= link_to "Reviews for #{@shelter.name}", "/shelters/#{@shelter.id}" %></h3></p>
