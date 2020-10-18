@@ -10,8 +10,4 @@ class Shelter < ApplicationRecord
   def total_pets
     self.pets.count
   end
-
-  def average_review_score
-    self.reviews.average(:rating)
-  end
 end
