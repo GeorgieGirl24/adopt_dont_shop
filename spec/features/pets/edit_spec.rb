@@ -26,7 +26,6 @@ RSpec.describe 'Pet Update' do
         shelter_id: "#{@shelter_2.id}",
         adoptable: false)
 
-
       @pet_2 = Pet.create!(image: image_1,
         name: 'Misto',
         description: 'Chichuahua, miniture Italian Grey that is a little skiddish, but so sweet',
@@ -62,7 +61,7 @@ RSpec.describe 'Pet Update' do
       fill_in :name, with: 'Molli'
 
       click_button 'Update Pet'
-
+# binding.pry
       expect(current_path).to eq("/pets/#{@pet_1.id}")
 
       expect(page).to have_content('7')
