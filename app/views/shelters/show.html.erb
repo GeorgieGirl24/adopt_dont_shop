@@ -16,6 +16,12 @@
   </section>
 <% end %>
 
+<section id='shelter-statistics'>
+<h3><%= @shelter.name %>'s Statics</h3>
+<p>Total number of pets: <%= @shelter.total_pets %></p>
+<p>Average review score: <%= @shelter.average_review_score%></p>
+</section>
+
 Address: <%= @shelter.address %>
 City: <%= @shelter.city %>
 State: <%= @shelter.state %>
