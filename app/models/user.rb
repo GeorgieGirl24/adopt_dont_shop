@@ -45,4 +45,11 @@ class User < ApplicationRecord
       }
     end
   end
+
+  def address
+    {street_address: self.street_address,
+    city: self.city,
+    state: self.state,
+    zip: self.zip}
+  end
 end

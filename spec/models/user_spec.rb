@@ -58,7 +58,7 @@ describe User do
       image: 'https://i.imgur.com/ETO90Ubb.jpg',
       user_id: @user_1.id
     )
-     
+
     @review_3 = @shelter_3.reviews.create!(
       title: 'Awful!',
       rating: '1.5',
@@ -67,10 +67,10 @@ describe User do
       user_id: @user_1.id
     )
    @highest_review = {
-        title: @review_1.title,
-        rating: @review_1.rating,
-        content: @review_1.content,
-        image: @review_1.image
+        title: @review_4.title,
+        rating: @review_4.rating,
+        content: @review_4.content,
+        image: @review_4.image
     }
     @lowest_review = {
       title: @review_3.title,
@@ -79,7 +79,7 @@ describe User do
       image: @review_3.image
     }
   end
-  
+
   describe 'validations' do
     it { should validate_presence_of :name }
     it { should validate_presence_of :street_address }
@@ -87,7 +87,7 @@ describe User do
     it { should validate_presence_of :state }
     it { should validate_presence_of :zip }
   end
-  
+
   describe 'instance methods' do
     it '#highest_rated_review' do
       expect(@user_1.highest_rated_review).to eq(@highest_review)
@@ -95,10 +95,19 @@ describe User do
 
     it '#lowest_rated_review' do
       expect(@user_1.lowest_rated_review).to eq(@lowest_review)
-    end 
-    
+    end
+
     it 'average_review_score' do
-      expect(@user_1.average_review_score.round(2)).to eq(4.3)
+      expect(@user_1.average_review_score.round(2)).to eq(3.6)
+    end
+
+    it 'address' do
+      expect(@user_1.address).to eq({
+        street_address: @user_1.street_address,
+        city: @user_1.city,
+        state: @user_1.state,
+        zip: @user_1.zip
+        })
     end
   end
 end
