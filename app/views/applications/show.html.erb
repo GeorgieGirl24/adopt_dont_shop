@@ -1,0 +1,20 @@
+<h2><%= @user.name %>'s Application</h2>
+
+<h5><%= link_to 'Back to All Shelters', '/shelters' %> <%= link_to 'Back to All Pets', '/pets' %></h5>
+
+<section id="user-info">
+  <p><h3><%= @user.name %></h3></p>
+  <p><%= @user.address[:street_address] %>,
+  <%= @user.address[:city] %>,
+  <%= @user.address[:state] %>
+  <%= @user.address[:zip] %></p>
+</section>
+
+<section id="application-info">
+  <p>Description: <%= @application.description %></p>
+  <p>Pets:</p>
+  <% @application.pets.each do |pet| %>
+    <p><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></p>
+  <% end %>
+  <p>Status: <%= @application.status %></p>
+</section>
