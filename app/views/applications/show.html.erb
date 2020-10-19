@@ -1,4 +1,4 @@
-<h2><%= @user.name %>'s Application</h2>
+<h2>New Application</h2>
 
 <h5><%= link_to 'Back to All Shelters', '/shelters' %> <%= link_to 'Back to All Pets', '/pets' %></h5>
 
@@ -14,4 +14,21 @@
     <p><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></p>
   <% end %>
   <p>Status: <%= @application.status %></p>
+</section>
+
+<section id="add-pet">
+  <p><h3>Add a Pet to this Application</h3></p>
+
+  <%= form_tag "/applications/#{@application.id}", method: :get do %>
+    <%= label_tag(:search, "Search Pets") %>
+    <%= text_field_tag(:search, params[:search]) %>
+    <%= submit_tag('Submit') %>
+  <% end %>
+<% @pets.each do |pet| %>
+  <p>Name: <%= pet.name %></p>
+  <%= image_tag(pet.image, width: '250px') %>
+  <p>Approximate Age: <%= pet.approximate_age %></p>
+  <p>Description: <%= pet.description %></p>
+  <p>Sex: <%= pet.sex %></p>
+<% end %>
 </section>
