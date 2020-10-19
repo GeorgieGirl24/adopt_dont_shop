@@ -5,15 +5,18 @@ class ApplicationsController < ApplicationController
   end
 
   def new
-
   end
 
   def create
     @user = User.find_by(name: params[:name])
-    @application = @user.applications.new(application_params)
-    @application.save
-    binding.pry
-    redirect_to "/applications/#{@application.id}"
+    if !@user.nil?
+      @application = @user.applications.new(application_params)
+      @application.save
+      redirect_to "/applications/#{@application.id}"
+    else
+      flash.now[:alert] = 'Invalid user, must be a valid user.'
+      render :new
+    end
   end
 
   private
