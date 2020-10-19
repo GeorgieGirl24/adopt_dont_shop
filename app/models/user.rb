@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :reviews, dependent: :destroy
+  has_many :applications, dependent: :destroy
 
 
   validates_presence_of :name
@@ -47,9 +48,10 @@ class User < ApplicationRecord
   end
 
   def address
-    {street_address: self.street_address,
-    city: self.city,
-    state: self.state,
-    zip: self.zip}
+    # {street_address: self.street_address,
+    # city: self.city,
+    # state: self.state,
+    # zip: self.zip}
+    "#{self.street_address} #{self.city} #{self.state} #{self.zip}"
   end
 end

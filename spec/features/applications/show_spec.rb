@@ -107,5 +107,28 @@ RSpec.describe 'Application Show Page' do
         expect(page).to have_content(@application_1.status)
       end
     end
+
+    it 'I can see a link to start an application from the pet index page' do
+      visit '/pets'
+
+      expect(page).to have_link('Start an Application')
+      click_link 'Start an Application'
+      expect(current_path).to eq('/applications/new')
+      fill_in :name, with: @user_1.name
+      fill_in :description, with: @application_1.description
+      expect(page).to have_button('Submit')
+      click_button 'Submit'
+      expect(current_path).to eq("/applications/#{@user_1.applications.last.id}")
+
+      within '#user-info' do
+        expect(page).to have_content(@user_1.name)
+        expect(page).to have_content(@user_1.address)
+      end
+
+      within '#application-info' do
+        expect(page).to have_content(@application_1.description)
+        expect(page).to have_content('In Progress')
+      end
+    end
   end
 end
