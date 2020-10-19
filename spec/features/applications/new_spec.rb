@@ -94,7 +94,7 @@ RSpec.describe 'Application New' do
     it 'When I fill in the form, invalid usernames show me an error' do
       visit '/applications/new'
 
-      fill_in :with, name: 'Donald Duck'
+      fill_in :name, with: 'Donald Duck'
       click_button 'Submit'
       expect(page).to have_content('Invalid user, must be a valid user.')
 
