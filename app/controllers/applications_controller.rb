@@ -2,6 +2,7 @@ class ApplicationsController < ApplicationController
   def show
     @application = Application.find(params[:application_id])
     @user = User.find(@application.user_id)
+    @pets = Pet.search(params[:search])
   end
 
   def new
@@ -22,5 +23,9 @@ class ApplicationsController < ApplicationController
   private
   def application_params
     params.permit(:description, :status)
+  end
+
+  def pet_params
+    params.require(:pet).permit(:name, :approximate_age, :image, :description, :sex, :search)
   end
 end
