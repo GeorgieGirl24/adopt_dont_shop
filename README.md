@@ -264,7 +264,7 @@ And I'm returned to the edit form to edit the review
 ## User Review Statistics
 
 ```
-[ ] done
+[x] done
 
 User Story 13, User Review Average Rating
 
@@ -274,7 +274,7 @@ Then I see the average rating of all of their reviews
 ```
 
 ```
-[ ] done
+[x] done
 
 User Story 14, Highlighted User Reviews
 
@@ -291,7 +291,7 @@ And I see the review with the worst rating that this user has written
 Users will be able to submit an application for one or more pets.
 
 ```
-[ ] done
+[x] done
 
 User Story 15, Application Show Page
 
@@ -308,7 +308,7 @@ Then I can see the following:
 ```
 
 ```
-[ ] done
+[x] done
 
 User Story 16, Starting an Application
 
@@ -325,7 +325,7 @@ And I see an indicator that this application is "In Progress"
 ```
 
 ```
-[ ] done
+[x] done
 
 User Story 17, Starting an Application, User not found
 
@@ -338,7 +338,7 @@ And I see a message that the user could not be found.
 ```
 
 ```
-[ ] done
+[x] done
 
 User Story 18, Searching for Pets for an Application
 
@@ -546,8 +546,8 @@ User Story 32, Shelter Statistics
 As a visitor
 When I visit a shelter's show page
 I see statistics for that shelter, including:
-- count of pets that are at that shelter
-- average shelter review rating
+x count of pets that are at that shelter
+x average shelter review rating
 - number of applications on file for that shelter
 ```
 
@@ -574,11 +574,11 @@ As a visitor
 If a shelter doesn't have any pets with an approved application
 I can delete that shelter
 When that shelter is deleted
-Then all of their pets are deleted as well
+x Then all of their pets are deleted as well
 ```
 
 ```
-[ ] done
+[x] done
 
 User Story 35, Deleting Shelters Deletes its Reviews
 
@@ -617,7 +617,7 @@ Each pet's name is a link to their show page
 ```
 
 ```
-[ ] done
+[x] done
 
 User Story 38, Reviews have a default picture
 
