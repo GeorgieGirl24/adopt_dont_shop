@@ -56,6 +56,13 @@ RSpec.describe 'Application Show Page' do
         sex: 'Female',
         shelter_id: "#{@shelter_1.id}"
       )
+      @pet_4 = Pet.create!(
+        image: '',
+        name: 'Misto',
+        approximate_age: 10,
+        sex: 'Female',
+        shelter_id: "#{@shelter_1.id}"
+      )
       @status = ['In Progress', 'Pending', 'Accepted', 'Rejected']
 
       @application_1 = Application.create!(
@@ -66,7 +73,7 @@ RSpec.describe 'Application Show Page' do
       @application_2 = Application.create!(
         description: 'I just love cats but dogs are chill too',
         user_id: @user_2.id,
-        status: @status[3]
+        status: @status[0]
       )
 
       ApplicationPet.create!(
@@ -128,6 +135,30 @@ RSpec.describe 'Application Show Page' do
       within '#application-info' do
         expect(page).to have_content(@application_1.description)
         expect(page).to have_content('In Progress')
+      end
+    end
+
+    it 'can search for a pet' do
+      visit "/applications/#{@application_2.id}"
+
+      within '#application-info' do
+        expect(page).to have_content('In Progress')
+      end
+
+      within '#add-pet' do
+        expect(page).to have_content('Add a Pet to this Application')
+
+        fill_in 'Search Pets', with: @pet_2.name
+        click_button 'Submit'
+
+        expect(current_path).to eq("/applications/#{@application_2.id}")
+        expect(page).to have_content(@pet_2.name)
+        expect(page).to have_content(@pet_4.name)
+        expect(page).to have_content(@pet_4.description)
+        expect(page).to have_content(@pet_2.approximate_age)
+        expect(page).to have_css("img[src*='#{@pet_2.image}']")
+        expect(page).to have_content(@pet_2.description)
+        expect(page).to have_content(@pet_2.sex)
       end
     end
   end
