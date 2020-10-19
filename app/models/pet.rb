@@ -8,10 +8,9 @@ class Pet < ApplicationRecord
   def self.search(search)
     pet = Pet.find_by(name: search)
     if pet
-      # binding.pry
       self.where(name: pet.name)
     else
-      Pet.all
+      pet = []
     end
   end
 end
