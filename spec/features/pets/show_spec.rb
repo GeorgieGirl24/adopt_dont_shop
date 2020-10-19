@@ -41,6 +41,7 @@ RSpec.describe 'Pet Show' do
         sex: 'Female',
         shelter_id: "#{@shelter_1.id}",
         adoptable: false)
+
     end
 
     it 'can see the unique pets information' do
