@@ -1,5 +1,10 @@
-
 <h5><%= link_to 'Back to All Shelters', '/shelters'%> <%= link_to 'Back to All Pets', '/pets'%><h5>
+
+  <%# <%= render partial: 'form' locals {
+                                    path: "/reviews/#{@review.id}",
+                                    method: :patch,
+                                    submit_text: 'Update Review'
+                                    }%> %>
   <%= form_tag "/reviews/#{@review.id}", method: 'patch' do %>
     <p>Edit the information:</p><br>
     <p><%= label_tag :title %></p>
