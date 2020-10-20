@@ -234,6 +234,27 @@ RSpec.describe 'Application Show Page' do
       expect(page).to have_content('You must provide a description before we can submit your request.')
       expect(page).to have_content('In Progress')
     end
-  end
 
+    it 'can return any pet whose name partially matches my search' do
+      visit "/applications/#{@application_1.id}"
+
+      within "#add-pet" do
+        fill_in 'Search Pets', with: 'Mist'
+        click_button 'Submit'
+      end
+
+      expect(page).to have_content(@pet_4.name)
+    end
+
+    it 'can return any pet whose name partially matches and in any form of capitalization for my search' do
+      visit "/applications/#{@application_1.id}"
+
+      within "#add-pet" do
+        fill_in 'Search Pets', with: 'misto'
+        click_button 'Submit'
+      end
+
+      expect(page).to have_content(@pet_4.name)
+    end
+  end
 end
