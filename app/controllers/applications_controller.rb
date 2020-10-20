@@ -33,6 +33,9 @@ class ApplicationsController < ApplicationController
       # @application.update(pets: @application.pets)
       @application.add_pet(pet)
       redirect_to "/applications/#{@application.id}"
+    elsif params[:description].nil? || params[:description] == ''
+      flash[:alert] = 'You must provide a description before we can submit your request.'
+      redirect_to "/applications/#{@application.id}"
     elsif params[:description]
       @application.update(description: params[:description], status: 'Pending')
       redirect_to "/applications/#{@application.id}"
