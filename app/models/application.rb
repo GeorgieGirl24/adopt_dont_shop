@@ -5,4 +5,8 @@ class Application < ApplicationRecord
 
   validates_presence_of :description
   validates_presence_of :status
+
+  def add_pet(pet)
+    self.pets << pet
+  end
 end

@@ -70,40 +70,39 @@ RSpec.describe Application do
       @status = ['In Progress', 'Pending', 'Accepted', 'Rejected']
 
       @application_1 = Application.create!(
-        user_name: @user_1.name,
-        user_address: @user_1.address,
         description: 'I am great with animals and have a yard',
-        pets: [@pet_1.name, @pet_2.name, @pet_3.name],
-        status: @status[1]
+        status: @status[1],
+        user_id: @user_1.id,
       )
       @application_2 = Application.create!(
-        user_name: @user_2.name,
-        user_address: @user_2.address,
         description: 'I just love cats but dogs are chill too',
-        pets: [@pet_1.name, @pet_2.name, @pet_3.name],
-        status: @status[3]
+        status: @status[3],
+        user_id: @user_2.id
       )
 
-      ApplicationPets.create!(
+      ApplicationPet.create!(
         pet: @pet_1,
-        application: @application_1,
-        status: @status[0]
+        application: @application_1
+        # status: @status[0]
       )
-      ApplicationPets.create!(
+      ApplicationPet.create!(
         pet: @pet_2,
-        application: @application_1,
-        status: @status[1]
+        application: @application_1
+        # status: @status[0]
       )
-      ApplicationPets.create!(
+      ApplicationPet.create!(
         pet: @pet_2,
-        application: @application_2,
-        status: @status[0]
+        application: @application_2
+        # status: @status[0]
       )
-      ApplicationPets.create!(
+      ApplicationPet.create!(
         pet: @pet_3,
-        application: @application_2,
-        status: @status[1]
+        application: @application_2
+        # status: @status[0]
       )
+    end
+    it '#add_pet' do
+      expect(@application_1.pets.count).to eq(2)
     end
   end
 end

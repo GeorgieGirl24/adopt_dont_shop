@@ -75,7 +75,11 @@ RSpec.describe 'Application Show Page' do
         user_id: @user_2.id,
         status: @status[0]
       )
-
+      @application_3 = Application.create!(
+        description: 'I just love cats but dogs are chill too',
+        user_id: @user_1.id,
+        status: @status[0]
+      )
       ApplicationPet.create!(
         pet: @pet_1,
         application: @application_1,
@@ -159,6 +163,24 @@ RSpec.describe 'Application Show Page' do
         expect(page).to have_css("img[src*='#{@pet_2.image}']")
         expect(page).to have_content(@pet_2.description)
         expect(page).to have_content(@pet_2.sex)
+      end
+    end
+
+    it 'can adopt a pet by clicking the Adopt this Pet button' do
+      visit "/applications/#{@application_3.id}"
+
+      fill_in 'Search Pets', with: @pet_4.name
+      click_button 'Submit'
+
+      within "#pet-#{@pet_4.id}" do
+        expect(page).to have_content(@pet_4.name)
+        expect(page).to have_button('Adopt this Pet')
+        click_button 'Adopt this Pet'
+        expect(current_path).to eq("/applications/#{@application_3.id}")
+      end
+
+      within '#application-info' do
+        expect(page).to have_content(@pet_4.name)
       end
     end
   end
