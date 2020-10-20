@@ -222,6 +222,18 @@ RSpec.describe 'Application Show Page' do
       expect(page).to_not have_content(:description)
       expect(page).to_not have_button 'Submit this Application'
     end
+
+    it 'cannot submit application if description is blank' do
+      visit "/applications/#{@application_1.id}"
+
+      within "#description-info" do
+        fill_in :description, with: nil
+        click_button 'Submit Application'
+        expect(current_path).to eq("/applications/#{@application_1.id}")
+      end
+      expect(page).to have_content('You must provide a description before we can submit your request.')
+      expect(page).to have_content('In Progress')
+    end
   end
 
 end
