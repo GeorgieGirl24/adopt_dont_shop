@@ -3,6 +3,7 @@ class ApplicationsController < ApplicationController
     @application = Application.find(params[:application_id])
     @user = User.find(@application.user_id)
     # binding.pry
+
     @pets = Pet.search(params[:search])
 
 #   @pets = Pet.where('lower(name) = ?', "%#{@pet.name.downcase}%")
@@ -29,6 +30,7 @@ class ApplicationsController < ApplicationController
     @application = Application.find(params[:application_id])
     if params[:pet_id]
       pet = Pet.find(params[:pet_id])
+      # @application.update(pets: @application.pets)
       @application.add_pet(pet)
       redirect_to "/applications/#{@application.id}"
     elsif params[:description]

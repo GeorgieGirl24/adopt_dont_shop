@@ -103,7 +103,7 @@ RSpec.describe 'Application Show Page' do
     end
 
 
-    it 'can see all the information needed for an application' do
+    it 'can see a name to start an application' do
       visit "/applications/#{@application_1.id}"
 
       within "#user-info" do
@@ -112,7 +112,7 @@ RSpec.describe 'Application Show Page' do
       end
 
       within "#application-info" do
-        expect(page).to have_content(@application_1.description)
+        # expect(page).to have_content(@application_1.description)
         expect(page).to have_content(@application_1.pets[0].name)
         expect(page).to have_link(@application_1.pets[0].name)
         expect(page).to have_content(@application_1.status)
@@ -185,9 +185,7 @@ RSpec.describe 'Application Show Page' do
       it 'can input a description as to why the User would be a good pet parent' do
         visit "/applications/#{@application_1.id}"
 
-        within "#application-info" do
-          expect(page).to have_content('Blank')
-        end
+
         fill_in 'Search Pets', with: @pet_1.name
         click_button 'Submit'
 
@@ -199,12 +197,15 @@ RSpec.describe 'Application Show Page' do
         within "#application-info" do
           expect(page).to have_content(@pet_1.name)
           expect(page).to have_content(@pet_2.name)
+        end
 
+        within "#description-info" do
           fill_in :description, with: 'I love pets and I have a large backyard'
           click_button 'Submit Application'
           expect(current_path).to eq("/applications/#{@application_1.id}")
         end
 
+        expect(@application_1.pets.count).to eq(3)
         within "#application-info" do
           expect(page).to have_content('I love pets and I have a large backyard')
         end
@@ -214,5 +215,13 @@ RSpec.describe 'Application Show Page' do
         expect(page).to_not have_content('Add a Pet to this Application')
       end
     end
+
+    it 'can not see a submit application unless there are pets selected' do
+      visit "/applications/#{@application_2.id}"
+
+      expect(page).to_not have_content(:description)
+      expect(page).to_not have_button 'Submit this Application'
+    end
   end
+
 end
