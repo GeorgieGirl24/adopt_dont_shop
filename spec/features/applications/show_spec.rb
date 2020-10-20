@@ -64,11 +64,11 @@ RSpec.describe 'Application Show Page' do
         shelter_id: "#{@shelter_1.id}"
       )
       @status = ['In Progress', 'Pending', 'Accepted', 'Rejected']
-
+      @description = ["Blank", "Good", "Bad", "Ugly"]
       @application_1 = Application.create!(
-        description: 'I am great with animals and have a yard',
+        description: @description[0],
         user_id: @user_1.id,
-        status: @status[1]
+        status: @status[0]
       )
       @application_2 = Application.create!(
         description: 'I just love cats but dogs are chill too',
@@ -88,7 +88,7 @@ RSpec.describe 'Application Show Page' do
       ApplicationPet.create!(
         pet: @pet_2,
         application: @application_1,
-        pet_status: @status[1]
+        pet_status: @status[0]
       )
       ApplicationPet.create!(
         pet: @pet_2,
@@ -98,7 +98,7 @@ RSpec.describe 'Application Show Page' do
       ApplicationPet.create!(
         pet: @pet_3,
         application: @application_2,
-        pet_status: @status[1]
+        pet_status: @status[0]
       )
     end
 
@@ -126,7 +126,6 @@ RSpec.describe 'Application Show Page' do
       click_link 'Start an Application'
       expect(current_path).to eq('/applications/new')
       fill_in :name, with: @user_1.name
-      fill_in :description, with: @application_1.description
       expect(page).to have_button('Submit')
       click_button 'Submit'
       expect(current_path).to eq("/applications/#{@user_1.applications.last.id}")
@@ -137,7 +136,6 @@ RSpec.describe 'Application Show Page' do
       end
 
       within '#application-info' do
-        expect(page).to have_content(@application_1.description)
         expect(page).to have_content('In Progress')
       end
     end
@@ -181,6 +179,39 @@ RSpec.describe 'Application Show Page' do
 
       within '#application-info' do
         expect(page).to have_content(@pet_4.name)
+      end
+    end
+    describe 'we are trying something here ' do
+      it 'can input a description as to why the User would be a good pet parent' do
+        visit "/applications/#{@application_1.id}"
+
+        within "#application-info" do
+          expect(page).to have_content('Blank')
+        end
+        fill_in 'Search Pets', with: @pet_1.name
+        click_button 'Submit'
+
+        within "#pet-#{@pet_1.id}" do
+          click_button 'Adopt this Pet'
+          expect(current_path).to eq("/applications/#{@application_1.id}")
+        end
+
+        within "#application-info" do
+          expect(page).to have_content(@pet_1.name)
+          expect(page).to have_content(@pet_2.name)
+
+          fill_in :description, with: 'I love pets and I have a large backyard'
+          click_button 'Submit Application'
+          expect(current_path).to eq("/applications/#{@application_1.id}")
+        end
+
+        within "#application-info" do
+          expect(page).to have_content('I love pets and I have a large backyard')
+        end
+
+        expect(page).to have_content('Pending')
+
+        expect(page).to_not have_content('Add a Pet to this Application')
       end
     end
   end
