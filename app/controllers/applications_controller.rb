@@ -10,6 +10,7 @@ class ApplicationsController < ApplicationController
   end
 
   def new
+
   end
 
   def create
@@ -26,9 +27,14 @@ class ApplicationsController < ApplicationController
 
   def update
     @application = Application.find(params[:application_id])
-    pet = Pet.find(params[:pet_id])
-    @application.add_pet(pet)
-    redirect_to "/applications/#{@application.id}"
+    if params[:pet_id]
+      pet = Pet.find(params[:pet_id])
+      @application.add_pet(pet)
+      redirect_to "/applications/#{@application.id}"
+    elsif params[:description]
+      @application.update(description: params[:description], status: 'Pending')
+      redirect_to "/applications/#{@application.id}"
+    end
   end
 
   private
