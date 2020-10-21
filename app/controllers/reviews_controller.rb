@@ -18,7 +18,7 @@ class ReviewsController < ApplicationController
       rating: params[:rating],
       content: params[:content],
       image: params[:image],
-      shelter: @shelter,
+      shelter_id: @shelter.id,
       user_id: @user_id)
     if @user_id.nil?
       flash[:alert] = "That name doesn't exisit in our database. You must be a valid user."
@@ -29,12 +29,6 @@ class ReviewsController < ApplicationController
       flash[:alert] = 'Required information missing. Request not submitted'
       redirect_to "/shelters/#{@shelter.id}/reviews/new"
     end
-# user_id: @user_id
-# move to Model
-    # review = Review.new(review_params)
-    # review.user_id = @user_id
-    # review.shelter_id = @shelter.id
-    # new_review = Review.make_review
   end
 
   def edit
@@ -55,15 +49,7 @@ class ReviewsController < ApplicationController
       content: params[:content],
       image: params[:image],
       shelter: @shelter,
-      user: @user
-      )
-      review = @review.update(title: params[:title],
-        rating: params[:rating],
-        content: params[:content],
-        image: params[:image],
-        shelter: @shelter,
-        user: @user
-      )
+      user: @user)
       redirect_to "/shelters/#{@shelter.id}"
     else
       flash.now[:alert] = 'Empty Field. Please try again.'
@@ -74,7 +60,6 @@ class ReviewsController < ApplicationController
   def destroy
     @review = Review.find(params[:review_id])
     @review.destroy
-
     redirect_to "/shelters/#{@review.shelter.id}"
   end
 
