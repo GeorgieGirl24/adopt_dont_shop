@@ -70,7 +70,7 @@ RSpec.describe 'Admin applications show page' do
       )
     end
 
-    it 'I can approve pet-specific applications for each pet' do
+    it 'I can accept pet-specific applications for each pet' do
       visit "/admin/applications/#{@application_1.id}"
 
       within "#pet-#{@app_pet_1.id}" do
@@ -86,5 +86,25 @@ RSpec.describe 'Admin applications show page' do
       end
 
     end
+
+    # it 'I can reject pet-specific applications for each pet' do
+    #   visit "/admin/applications/#{@application_1.id}"
+    #
+    #   within "#pet-#{@app_pet_1.id}" do
+    #     expect(page).to have_content(@pet_1.name)
+    #     expect(page).to have_button('Accept Pet')
+    #     expect(page).to have_button('Reject Pet')
+    #
+    #     click_button 'Reject Pet'
+    #     expect(current_path).to eq("/admin/applications/#{@application_1.id}")
+    #   end
+    #
+    #   within "#pet-#{@app_pet_1.id}" do
+    #     expect(page).to have_content('Rejected')
+    #     expect(page).to_not have_button('Reject Pet')
+    #     expect(page).to_not have_button('Accept Pet')
+    #   end
+    #
+    # end
   end
 end
