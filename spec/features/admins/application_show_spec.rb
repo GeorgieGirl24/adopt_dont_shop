@@ -56,17 +56,17 @@ RSpec.describe 'Admin applications show page' do
       @app_pet_1 = ApplicationPet.create!(
         pet_id: @pet_1.id,
         application_id: @application_1.id,
-        pet_status: 'Pending'
+        pet_status: nil
       )
       @app_pet_2 = ApplicationPet.create!(
         pet_id: @pet_2.id,
         application_id: @application_1.id,
-        pet_status: 'Pending'
+        pet_status: nil
       )
       @app_pet_3 = ApplicationPet.create!(
         pet_id: @pet_3.id,
         application_id: @application_1.id,
-        pet_status: 'Pending'
+        pet_status: nil
       )
     end
 
@@ -80,7 +80,10 @@ RSpec.describe 'Admin applications show page' do
         expect(current_path).to eq("/admin/applications/#{@application_1.id}")
       end
 
-      expect(page).to have_content('Accepted')
+      within "#pet-#{@app_pet_1.id}" do
+        expect(page).to have_content('Accepted')
+        expect(page).to_not have_button('Accept Pet')
+      end
 
     end
   end
