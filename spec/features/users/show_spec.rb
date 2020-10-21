@@ -60,7 +60,7 @@ RSpec.describe 'As a visitor' do
         image: 'https://i.imgur.com/ETO90Ubb.jpg',
         user_id: @user_1.id
       )
-        
+
       @review_4 = @shelter_2.reviews.create!(
         title: 'Loved the care of Sophia',
         rating: '4.9',
@@ -98,10 +98,10 @@ RSpec.describe 'As a visitor' do
 
       within "#highest_rated_review" do
         expect(page).to have_content("Highest Rated Review")
-        expect(page).to have_content(@review_1.title)
-        expect(page).to have_content(@review_1.rating)
-        expect(page).to have_content(@review_1.content)
-        expect(page).to have_content(@review_1.image)
+        expect(page).to have_content(@review_4.title)
+        expect(page).to have_content(@review_4.rating)
+        expect(page).to have_content(@review_4.content)
+        expect(page).to have_content(@review_4.image)
       end
 
       within "#lowest_rated_review" do
@@ -111,13 +111,14 @@ RSpec.describe 'As a visitor' do
         expect(page).to have_content(@review_3.content)
         expect(page).to have_content(@review_3.image)
       end
+    end
 
     it 'can see the average of all their reviews' do
       visit "/users/#{@user_1.id}"
 
       within "#average-review-score" do
         expect(page).to have_content('My average review score')
-        expect(page).to have_content('4.3')
+        expect(page).to have_content('3.6')
       end
 
     end
