@@ -40,6 +40,7 @@ RSpec.describe 'Application Show Page' do
         name: 'Mollie',
         approximate_age: 6,
         sex: 'Female',
+        adoptable: true,
         shelter_id: "#{@shelter_2.id}"
       )
       @pet_2 = Pet.create!(
@@ -47,6 +48,7 @@ RSpec.describe 'Application Show Page' do
         name: 'Misto',
         approximate_age: 12,
         sex: 'Male',
+        adoptable: true,
         shelter_id: "#{@shelter_1.id}"
       )
       @pet_3 = Pet.create!(
@@ -54,6 +56,7 @@ RSpec.describe 'Application Show Page' do
         name: 'Monkey',
         approximate_age: 12,
         sex: 'Female',
+        adoptable: true,
         shelter_id: "#{@shelter_1.id}"
       )
       @pet_4 = Pet.create!(
@@ -61,6 +64,7 @@ RSpec.describe 'Application Show Page' do
         name: 'Misto',
         approximate_age: 10,
         sex: 'Female',
+        adoptable: true,
         shelter_id: "#{@shelter_1.id}"
       )
       @status = ['In Progress', 'Pending', 'Accepted', 'Rejected']
@@ -83,22 +87,22 @@ RSpec.describe 'Application Show Page' do
       ApplicationPet.create!(
         pet: @pet_1,
         application: @application_1,
-        pet_status: @status[0]
+        pet_status: @status[1]
       )
       ApplicationPet.create!(
         pet: @pet_2,
         application: @application_1,
-        pet_status: @status[0]
+        pet_status: @status[1]
       )
       ApplicationPet.create!(
         pet: @pet_2,
         application: @application_2,
-        pet_status: @status[0]
+        pet_status: @status[1]
       )
       ApplicationPet.create!(
         pet: @pet_3,
         application: @application_2,
-        pet_status: @status[0]
+        pet_status: @status[1]
       )
     end
 

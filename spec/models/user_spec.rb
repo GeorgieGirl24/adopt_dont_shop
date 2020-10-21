@@ -102,12 +102,12 @@ describe User do
     end
 
     it 'address' do
-      expect(@user_1.address).to eq({
-        street_address: @user_1.street_address,
-        city: @user_1.city,
-        state: @user_1.state,
-        zip: @user_1.zip
-        })
+      expect(@user_1.address).to eq("#{@user_1.street_address} #{@user_1.city} #{@user_1.state} #{@user_1.zip}")
+
+
+
+
+
     end
   end
 end

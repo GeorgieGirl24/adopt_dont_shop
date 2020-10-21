@@ -11,7 +11,6 @@ class User < ApplicationRecord
 
   def highest_rated_review
     highest = self.reviews.order(rating: :desc).first
-    # binding.pry
     if self.reviews.empty?
       highest_review = {title: nil,
         rating: nil,
@@ -48,10 +47,6 @@ class User < ApplicationRecord
   end
 
   def address
-    # {street_address: self.street_address,
-    # city: self.city,
-    # state: self.state,
-    # zip: self.zip}
     "#{self.street_address} #{self.city} #{self.state} #{self.zip}"
   end
 end

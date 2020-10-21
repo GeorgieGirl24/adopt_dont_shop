@@ -96,10 +96,10 @@ RSpec.describe 'Application New' do
 
       fill_in :name, with: 'Donald Duck'
       click_button 'Submit'
+      # expect(current_path).to eq("/applications/#{@user_1.applications.last.id}")
       expect(page).to have_content('Invalid user, must be a valid user.')
-
       fill_in :name, with: @user_1.name
-      fill_in :description, with: @application_1.description
+      # fill_in :description, with: @application_1.description
       click_button 'Submit'
       expect(current_path).to eq("/applications/#{@user_1.applications.last.id}")
     end

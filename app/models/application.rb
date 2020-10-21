@@ -6,7 +6,7 @@ class Application < ApplicationRecord
   validates_presence_of :description
   validates_presence_of :status
 
-  def add_pet(pet)
-    self.pets << pet
+  def add_pet(pet_id)
+    self.pets << Pet.find(pet_id)
   end
 end
