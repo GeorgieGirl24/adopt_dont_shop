@@ -1,6 +1,6 @@
 <h5><%= link_to 'Back to All Shelters', '/shelters' %> <%= link_to 'Back to All Pets', '/pets' %></h5>
 
-<h2>Adoptable From: <%= link_to "#{@pet.shelter.name}", "/shelters/#{@pet.shelter.id}" %><h2>
+<h2>Adoptable From: <%= link_to "#{@pet.shelter_name}", "/shelters/#{@pet.find_shelter_id}" %><h2>
 <%= image_tag(@pet.image, width: '250px') %>
 <p>Name: <%= @pet.name %></p>
 <p>Description: <%= @pet.description %></p>
