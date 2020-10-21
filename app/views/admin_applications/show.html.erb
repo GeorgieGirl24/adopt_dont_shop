@@ -4,36 +4,21 @@
 
 <h3>Application Status: <%= @application.status %></h3>
 
-<%# we want to evaluate each application_pet.
-If all of them are approved,
-then the entire application is approved.
-else, (if any of the application_pets approvals are rejected),
-then the entire application is rejected. %>
-
 <% @application_pets.each do |app_pet| %>
   <section id="pet-<%= app_pet.id %>">
-    <p>Pet Name: <%= app_pet.pet.name %></p>
-    <p>Pet Approval Status: <%= app_pet.pet_status %></p>
-
-  <%# If the entire application is pending, AND the pet is NOT adoptable,
-        'This pet has already been adopted'
-      elsif, the entire application is pending, AND the pet is adoptable,
-       we see buttons to accept (or reject) %>
-
-  <% if app_pet.pet_status == nil %>
-    <%= form_tag "/admin/applications/#{@application.id}", method: :patch do %>
-      <%= hidden_field_tag :pet_id, app_pet.id%>
-      <%= submit_tag 'Accept Pet' %>
-      <%# submit_tag 'Reject Pet' %>
+    <p>Pet Name: <%= app_pet.pet_name %></p>
+    <p>Pet Acceptance Status: <%= app_pet.pet_status %></p>
+    <% if app_pet.pet_status == nil %>
+      <%= form_tag "/admin/applications/#{@application.id}", method: :patch do %>
+        <%= hidden_field_tag :pet_id, app_pet.id %>
+        <%= submit_tag 'Accept Pet' %>
+      <% end %>
+    <% elsif app_pet.pet_status = 'Accepted' && app_pet.pet_adoptable? == false %>
+      <p>This pet has been approved for adoption.</p>
     <% end %>
-  <% elsif app_pet.pet_status = 'Accepted' && app_pet.pet.adoptable == false %>
-
-    <p>This pet has been approved for adoption.</p>
-  <% end %>
-
-
-    <%# button_to 'Accept Pet', "/admin/applications/#{@application.id}", method: :patch, remote: true, params: { pet_id: app_pet.id, pet_status: 'Accepted' } %>
   </section>
 <% end %>
 
- <%# @application.status == 'Pending' && app_pet.pet.adoptable == true &&  app_pet.pet_status == " " %>
+<%# <%= button_to 'Accept Pet', "/admin/applications/#{@application.id}", method: :patch, params: { pet_id: app_pet.id, pet_status: 'Accepted' } %>
+
+<%# <%= button_to 'Reject Pet', "/admin/applications/#{@application.id}", method: :patch, params: { pet_id: app_pet.id, pet_status: 'Rejected' } %> %>
