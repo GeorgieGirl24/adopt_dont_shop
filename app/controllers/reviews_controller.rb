@@ -1,6 +1,5 @@
 class ReviewsController < ApplicationController
   def show
-    @review = Review.all
   end
 
   def index
@@ -61,10 +60,5 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:review_id])
     @review.destroy
     redirect_to "/shelters/#{@review.shelter.id}"
-  end
-
-  private
-  def review_params
-    params.permit(:title, :rating, :content, :image, :name)
   end
 end
