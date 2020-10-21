@@ -82,23 +82,23 @@ RSpec.describe Application do
 
       ApplicationPet.create!(
         pet: @pet_1,
-        application: @application_1
-        # status: @status[0]
+        application: @application_1,
+        pet_status: @status[1]
       )
       ApplicationPet.create!(
         pet: @pet_2,
-        application: @application_1
-        # status: @status[0]
+        application: @application_1,
+        pet_status: @status[1]
       )
       ApplicationPet.create!(
         pet: @pet_2,
-        application: @application_2
-        # status: @status[0]
+        application: @application_2,
+        pet_status: @status[0]
       )
       ApplicationPet.create!(
         pet: @pet_3,
-        application: @application_2
-        # status: @status[0]
+        application: @application_2,
+        pet_status: @status[1]
       )
     end
     it '#add_pet' do
