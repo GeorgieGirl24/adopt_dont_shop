@@ -38,4 +38,7 @@ Rails.application.routes.draw do
   get '/applications/:application_id', to: 'applications#show'
   get '/applications/:application_id/edit', to: 'applications#edit'
   patch '/applications/:application_id', to: 'applications#update'
+
+  get '/admin/applications/:application_id', to: 'admin_applications#show'
+  patch '/admin/applications/:application_id', to: 'admin_applications#update'
 end
