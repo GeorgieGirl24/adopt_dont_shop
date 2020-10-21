@@ -2,7 +2,7 @@
 <h2>Add a Pet to the Shelter:</h2><br>
 
 <%= render partial: 'form', locals: {
-                                    path: "/shelters/#{@shelter_id}/pets",
+                                    path: "/shelters/#{@shelter.id}/pets",
                                     method: :post,
                                     submit_text: 'Add Pet to Shelter',
                                     }%>
