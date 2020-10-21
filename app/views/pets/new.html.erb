@@ -1,8 +1,25 @@
 <h5><%= link_to 'Back to All Shelters', '/shelters' %> <%= link_to 'Back to All Pets', '/pets' %></h5>
 <h2>Add a Pet to the Shelter:</h2><br>
+<%= form_tag "/shelters/#{@shelter_id}/pets" do %>
+  <p><%= label_tag 'Image of Pet: ' %></p>
+  <p><%= text_field_tag :image %></p>
+  <p><%= label_tag 'Pet Name: ' %></p>
+  <p><%= text_field_tag :name %></p>
+  <p><%= label_tag 'Approximate Age: ' %></p>
+  <p><%= text_field_tag :approximate_age %></p>
+  <p><%= label_tag 'Sex of Pet: ' %></p>
+  <p><%= text_field_tag :sex %></p>
+  <p><%= label_tag 'Description of Pet: ' %></p>
+  <p><%= text_field_tag :description %></p>
+
+  <%= submit_tag 'Add Pet to Shelter' %>
+<% end %>
+
+<%# <h5><%= link_to 'Back to All Shelters', '/shelters' %> <%= link_to 'Back to All Pets', '/pets' %></h5>
+<h2>Add a Pet to the Shelter:</h2><br>
 
 <%= render partial: 'form', locals: {
                                     path: "/shelters/#{@shelter_id}/pets",
                                     method: :post,
                                     submit_text: 'Add Pet to Shelter',
-                                    }%>
+                                    }%> %>

@@ -1,6 +1,25 @@
 <h5><%= link_to 'Back to All Shelters', '/shelters'%> <%= link_to 'Back to All Pets', '/pets'%><h5>
+<%= form_tag "/shelters/#{@shelter.id}/reviews" do %>
+  <p>Enter a new review:</p>
+  <p><%= label_tag 'Title: ' %></p>
+  <p><%= text_field_tag :title %></p>
+  <p><%= label_tag 'Rating: ' %></p>
+  <p><%= text_field_tag :rating %></p>
+  <p><%= label_tag 'Content: ' %></p>
+  <p><%= text_field_tag :content %></p>
+  <p><%= label_tag 'Image: ' %></p>
+  <p><%= text_field_tag :image %></p>
+  <p><%= label_tag 'Name: ' %></p>
+  <p><%= text_field_tag :name %></p>
+
+  <%= submit_tag 'Submit' %>
+
+<% end %>
+<%# 
+
+<h5><%= link_to 'Back to All Shelters', '/shelters'%> <%= link_to 'Back to All Pets', '/pets'%><h5>
 <%= render partial: 'form', locals: {
                                     path: "/shelters/#{@shelter.id}/reviews",
                                     method: :post,
                                     submit_text: 'Submit'
-                                    } %>
+                                    } %> %>

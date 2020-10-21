@@ -10,7 +10,6 @@ class ApplicationsController < ApplicationController
   end
 
   def new
-
   end
 
   def create
@@ -29,8 +28,10 @@ class ApplicationsController < ApplicationController
     @application = Application.find(params[:application_id])
     if params[:pet_id]
       pet = Pet.find(params[:pet_id])
-      # @application.update(pets: @application.pets)
+      # binding.pry
       @application.add_pet(pet)
+      # @application.update(pets: @application.pets)
+
       redirect_to "/applications/#{@application.id}"
     elsif params[:description].nil? || params[:description] == ''
       flash[:alert] = 'You must provide a description before we can submit your request.'
