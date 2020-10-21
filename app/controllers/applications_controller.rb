@@ -1,6 +1,7 @@
 class ApplicationsController < ApplicationController
   def show
     @application = Application.find(params[:application_id])
+    binding.pry
     @user = User.find(@application.user_id)
     if params[:search]
       @pets = Pet.where('lower(name) LIKE ?', "%#{params[:search]}%".downcase)
@@ -10,7 +11,6 @@ class ApplicationsController < ApplicationController
   end
 
   def new
-
   end
 
   def create

@@ -39,6 +39,12 @@ RSpec.describe 'Shelters New' do
         expect(find_field(:city).value).to eq 'Littleton'
         expect(find_field(:state).value).to eq 'CO'
         expect(find_field(:zip).value).to eq '82349'
+
+        fill_in :name, with: 'Max Fund - Aurora'
+
+        click_button('Edit Shelter')
+        expect(current_path).to eq("/shelters")
+        expect(page).to have_content('Max Fund - Aurora')
       end
     end
 
