@@ -8,6 +8,8 @@ class AdminApplicationsController < ApplicationController
     @application = Application.find(params[:application_id])
     @application_pet = ApplicationPet.find(params[:pet_id])
     @application_pet.update(pet_status: 'Accepted')
+    @application_pet.pet.update(adoptable: false)
+  
     redirect_to "/admin/applications/#{@application.id}"
   end
 end
