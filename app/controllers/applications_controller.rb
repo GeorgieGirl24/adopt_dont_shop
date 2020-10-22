@@ -10,15 +10,14 @@ class ApplicationsController < ApplicationController
   end
 
   def new
-
   end
 
   def create
     @user = User.find_by(name: params[:name])
     if !@user.nil?
-      @application = @user.applications.new(application_params)
-      @application.save
-      redirect_to "/applications/#{@application.id}"
+      application = @user.applications.new(application_params)
+      application.save
+      redirect_to "/applications/#{application.id}"
     else
       flash.now[:alert] = 'Invalid user, must be a valid user.'
       render :new
@@ -42,9 +41,5 @@ class ApplicationsController < ApplicationController
   private
   def application_params
     params.permit(:description, :status)
-  end
-
-  def pet_params
-    params.require(:pet).permit(:name, :approximate_age, :image, :description, :sex, :search)
   end
 end
